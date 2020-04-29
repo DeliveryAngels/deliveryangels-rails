@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
 
     get_quantities.each do |q|
       @order.order_items.build(
-        grocery_id: q[:grocery_id], 
+        grocery_id: q[:grocery_id],
         quantity: q[:quantity]
       )
     end
@@ -67,10 +67,14 @@ class OrdersController < ApplicationController
   end
 
 
-  # GET /orders/1/review/ 
+  # GET /orders/1/review/
   def review
-    order = Order.find_by_id(params[:order_id])
-    @order_items = order.order_items.all
+    @order = Order.find_by_id(params[:order_id])
+  end
+
+  # GET /orders/1/delivery/
+  def delivery
+    @order = Order.find(params[:order_id])
   end
 
   private

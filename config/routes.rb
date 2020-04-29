@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   resources :orders do
   	get 'review'
-  end	
+    get 'delivery'
+  end
   get 'profile', action: :show, controller: 'users'
   root to: 'pages#home'
   resources :groceries, only: [:index]

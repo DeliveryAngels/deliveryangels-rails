@@ -1,7 +1,9 @@
 <h2>Confirm your items</h2>
 
-<% @order_items.each do |order_item| %>
+<% @order.order_items.all.each do |order_item| %>
 
   <%= order_item.quantity %> <%= order_item.name %><br />
 
 <% end %>
+
+<%= link_to 'Arrange delivery', order_delivery_path(@order), class: '-button' %>

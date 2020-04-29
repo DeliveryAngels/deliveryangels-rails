@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 feature "a vulnerable person places an order for groceries" do
-  scenario "everything goes to plan" do 
+  scenario "everything goes to plan" do
 
     # Given that some types of Grocery exist
 
     Grocery.create(name: 'White bread')
     Grocery.create(name: 'Spaghetti')
-    
+
     # when I go to the front page
     visit "/"
     expect(page).to have_content("Start Shopping")
@@ -25,10 +25,16 @@ feature "a vulnerable person places an order for groceries" do
     fill_in 'Spaghetti', with: '4'
     click_on "Confirm items"
 
-    # then I should see a review my order page, with two white bread 
+    # then I should see a review my order page, with two white bread
     # and four spaghetti
     expect(page).to have_content("Confirm your items")
     expect(page).to have_content("2 White bread")
     expect(page).to have_content("4 Spaghetti")
+
+    # everything looks good and I goto pick a time slot
+    click_on "Arrange delivery"
+    expect(page).to have_content("Arrange delivery")
+
+
   end
 end
