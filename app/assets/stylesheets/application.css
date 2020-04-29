@@ -105,7 +105,7 @@ section ul li:before {
   Button Styles
 */
 
-input.button, a.-button {
+input.-button, a.-button {
   background-color: #D94B50;
   color: #fff;
   border-radius: 30px;
