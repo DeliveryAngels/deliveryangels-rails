@@ -3,15 +3,14 @@
 <p>Select the items you need most:</p>
 
 <%= form_with model: @order do |f| %>
-	<%= f.fields_for :quantities do |q| %>
-		<% @groceries.each do |g| %>
-			
+  <%= f.fields_for :quantities do |q| %>
+    <% @groceries.each do |g| %>
       <%= q.label for: g.name do %>
         <%= g.name %>
-			  <%= q.number_field g.id, in: 1..4 %>
+        <%= q.number_field g.id, in: 1..4 %>
       <% end %>
-		<% end %>
-	<% end %>
-	<%= f.text_area :preferences %>
-	<%= f.submit "Confirm items", class: '-button' %>
+    <% end %>
+  <% end %>
+  <%= f.text_area :preferences %>
+  <%= f.submit "Confirm items", class: '-button' %>
 <% end %>
