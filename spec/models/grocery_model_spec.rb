@@ -1,0 +1,3 @@
+describe Grocery do
+
+end

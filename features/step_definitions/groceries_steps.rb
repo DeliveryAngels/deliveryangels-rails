@@ -7,5 +7,5 @@ When("I click on the shopping button") do
 end
 
 Then("I should see a list of groceries") do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(page).to have_content("Bread")
 end

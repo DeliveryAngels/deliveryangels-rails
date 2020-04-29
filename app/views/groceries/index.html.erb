@@ -1,0 +1,8 @@
+<h2 class="pick-items">Pick your items</h2>
+
+<p>Select the items you need most:</p>
+
+<% @groceries.each do |grocery| %>
+	<%= grocery.name %>
+	<%= number_field(:grocery, :quantity, in: 1..4, step: 1) %>
+<% end %>
