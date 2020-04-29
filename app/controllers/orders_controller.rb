@@ -28,14 +28,17 @@ class OrdersController < ApplicationController
 
     @order = Order.new(order_params)
 
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
-        format.json { render :show, status: :created, location: @order }
-      else
-        format.html { render :new }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
+    get_quantities.each do |q|
+      @order.order_items.build(
+        grocery_id: q[:grocery_id], 
+        quantity: q[:quantity]
+      )
+    end
+
+    if @order.save
+      redirect_to order_review_path(@order)
+    else
+      render :new
     end
   end
 
@@ -63,6 +66,13 @@ class OrdersController < ApplicationController
     end
   end
 
+
+  # GET /orders/1/review/ 
+  def review
+    order = Order.find_by_id(params[:order_id])
+    @order_items = order.order_items.all
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
@@ -71,6 +81,14 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.fetch(:order, {})
+      params.require(:order).except(:quantities).permit(:preferences, :quantities)
+    end
+
+    def get_quantities
+      quantities = []
+      params[:order][:quantities].each do |grocery_id, quantity|
+        quantities << { grocery_id: grocery_id, quantity: quantity }
+      end
+      quantities
     end
 end

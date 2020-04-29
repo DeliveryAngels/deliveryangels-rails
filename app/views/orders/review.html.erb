@@ -1,0 +1,7 @@
+<h2>Confirm your items</h2>
+
+<%= @order_items.each do |order_item| %>
+
+  <%= order_item.quantity %> <%= order_item.name %><br />
+
+<% end %>

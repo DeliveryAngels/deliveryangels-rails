@@ -1,7 +1,3 @@
 class Order < ApplicationRecord
-
-	def groceries
-		Groceries.all
-	end
-
+  has_many :order_items
 end

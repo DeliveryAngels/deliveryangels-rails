@@ -21,15 +21,14 @@ feature "a vulnerable person places an order for groceries" do
 
     # and I add two White bread and four Spaghetti to my order
 
-      # fill_in ?
+    fill_in 'White bread', with: '2'
+    fill_in 'Spaghetti', with: '4'
+    click_on "Confirm items"
 
-
-      # submit form
-
-      expect(page).to have_content("Arrange delivery")
-
-    # And I want to have my order delivered in the morning
-
-
+    # then I should see a review my order page, with two white bread 
+    # and four spaghetti
+    expect(page).to have_content("Confirm your items")
+    expect(page).to have_content("2 White bread")
+    expect(page).to have_content("4 Spaghetti")
   end
 end
