@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :orders do
   	get 'review'
     get 'delivery'
+    get 'pending'
   end
   get 'profile', action: :show, controller: 'users'
   root to: 'pages#home'

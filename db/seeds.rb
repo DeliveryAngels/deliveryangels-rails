@@ -5,7 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
 TimeSlot.create(code: '1', name: 'Morning');
 TimeSlot.create(code: '2', name: 'Afternoon');
 TimeSlot.create(code: '3', name: 'Evening');

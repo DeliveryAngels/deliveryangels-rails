@@ -39,10 +39,19 @@ class OrdersController < ApplicationController
     end
   end
 
+  # GET /orders/1/review
+  def pending
+    @order = Order.find(params[:order_id])
+  end
+
   # PATCH/PUT /orders/1
   def update
     if @order.update(order_params)
-      redirect_to @order, notice: 'Order was successfully updated.'
+      if stage == 'time_slot'
+        redirect_to order_pending_path(@order)
+      else
+        redirect_to @order, notice: 'Order was successfully updated.'
+      end
     else
       render :edit
     end
@@ -71,9 +80,14 @@ class OrdersController < ApplicationController
       @order = Order.find(params[:id])
     end
 
+    # get order process stage
+    def stage
+      params[:order][:stage]
+    end
+
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).except(:quantities).permit(
+      params.require(:order).except(:quantities, :stage).permit(
         :preferences, :quantities, :timeslot
       )
     end
