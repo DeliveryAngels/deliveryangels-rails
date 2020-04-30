@@ -17,13 +17,21 @@
         <span class="site-logo">
           DeliveryAngels
         </span>
+        <ul class="veganburger-menu">
+          <li><%= link_to "Log Out", destroy_user_session_path %></li>
+        </ul>
       </div>
     </header>
+
     <!-- added for devise -->
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <!-- end added for devise -->
 
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer></footer>
   </body>
 </html>

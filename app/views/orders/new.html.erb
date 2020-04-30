@@ -1,30 +1,56 @@
+
+<% if @order.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+    <ul>
+      <% @order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
 <div class="region">
   <h2 class="pick-items">Pick your items</h2>
 
   <p>Select the items you need most:</p>
 
-  <% if @order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
-
-      <ul>
-        <% @order.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+</div> <!-- .region -->
 
   <%= form_with model: @order do |f| %>
     <%= f.fields_for :quantities do |q| %>
-      <% @groceries.each do |g| %>
-        <%= q.label for: g.name do %>
-          <%= g.name %>
-          <%= q.number_field g.id, in: 1..4 %>
-        <% end %>
+
+      <% @categories.each do |c| %>
+        <div class="container">
+          <h3 class="category-header category-header-<%= c.name.downcase %>"><%= c.name %></h3>
+        </div>
+        <div class="category-fields-header">
+          <div class="container">
+            <span>Item</span>
+            <span>Quantity</span>
+          </div>
+        </div>
+        <div class="region category-fields category-<%= c.name.downcase %>-fields">
+          <% c.groceries.each do |g| %>
+            <div class="form-field">
+              <%= q.label for: g.name do %>
+                <%= g.name %>
+                <%= q.number_field g.id, in: 1..4 %>
+              <% end %>
+            </div>
+          <% end %>
+        </div> <!-- .category-fields .category-<%= c.name.downcase %>-fields -->
       <% end %>
     <% end %>
-    <%= f.text_area :preferences %>
-    <%= f.submit "Confirm items", class: '-button' %>
+    <div class="region">
+      <div class="form-field">
+        <%= f.text_area :preferences %>
+      </div>
+      <div class="form-field">
+        <%= f.submit "Confirm items", class: '-button' %>
+      </div>
+    </div> <!-- .region -->
   <% end %>
-</div> <!-- .region -->
+
