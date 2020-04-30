@@ -1,1 +1,20 @@
 <h2>Arrange delivery</h2>
+<p>Select your ideal delivery time.</p>
+<p>This will help us find a DeliveryAngel for you.</p>
+
+
+<section class="time-slots">
+  <div class="container">
+    <%= form_with model: @order do |f| %>
+
+      <fieldset class="radio-group-vertical">
+        <%= f.collection_radio_buttons :timeslot, @time_slots, :id, :name do |b| %>
+          <% b.label { b.radio_button + b.text } %>
+        <% end %>
+      </fieldset>
+
+      <%= f.submit "Confirm delivery time" %>
+    <% end %>
+
+  </div>
+</section>
