@@ -35,6 +35,7 @@ class OrdersController < ApplicationController
     if @order.save
       redirect_to order_review_path(@order)
     else
+      @groceries = Grocery.all
       render :new
     end
   end
