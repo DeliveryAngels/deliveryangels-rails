@@ -86,7 +86,7 @@ strong.green {
   color: #84BD57;
 }
 
-/* 
+/*
   List styles
 */
 
@@ -98,12 +98,16 @@ section ul li:before {
   color: #64D8EF;
   content: "\2022";
   display: inline-block;
-  width: 1em; 
+  width: 1em;
 }
 
 /*
   Button Styles
 */
+
+input.-button {
+
+}
 
 input.-button, a.-button {
   background-color: #D94B50;
@@ -132,12 +136,12 @@ section {
   width: 100%;
 }
 
-.region {
+/*.region {
   margin: 0 auto;
   width: 900px;
-}
+}*/
 
-@media (max-width: 1050px) { 
+/*@media (max-width: 1050px) {
   .region {
     margin: 0 auto;
     width: 400px;
@@ -152,8 +156,8 @@ section {
   }
 
 }
-
-@media (max-width: 400px) { 
+*/
+/*@media (max-width: 400px) { */
   .region {
     margin: 0 auto;
     width: 400px;
@@ -167,7 +171,7 @@ section {
     max-width:18rem;
   }
 
-}
+/*}*/
 
 
 /*
@@ -194,6 +198,7 @@ input {
 
 header {
   height: 70px;
+  border-bottom: 1px solid grey;
 }
 
 

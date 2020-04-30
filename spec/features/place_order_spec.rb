@@ -13,8 +13,28 @@ feature "a vulnerable person places an order for groceries" do
     expect(page).to have_content("Start Shopping")
 
 
-    # and I visit the start shopping page
+    # and I click on start shipping
     click_link "Start Shopping"
+
+    # I should be asked to register
+    expect(page).to have_content("Account sign-up")
+
+    # And I create an account
+    fill_in "First Name", with: "Carrie"
+    fill_in "Last Name", with: "Fisher"
+    fill_in "Email Address", with: "carrie.fisher@starwars.com"
+    fill_in "Phone Number", with: "07845 845845"
+    fill_in "Password", with: "hansolo"
+    fill_in "Confirm Password", with: "hansolo"
+    check "I have read and accept the terms and conditions"
+    click_on "Register account"
+    user = User.last
+    expect(user.first_name).to eq("Carrie")
+    expect(user.last_name).to eq("Fisher")
+    expect(user.email).to eq("carrie.fisher@starwars.com")
+    expect(user.phone).to eq("07845 845845")
+
+    # and I should be on the start shopping page
     expect(page).to have_content("Pick your items")
     expect(page).to have_content("White bread")
 
@@ -35,6 +55,10 @@ feature "a vulnerable person places an order for groceries" do
     click_on "Arrange delivery"
     expect(page).to have_content("Arrange delivery")
 
-
+    # and I choose the morning
+    choose '#order_time_slot_1'
+    click_on "Confirm delivery time"
+    expect(Order.last.time_slot.name).to be("Morning")
+    expect(page).to have_content("Pending discussion");
   end
 end
