@@ -37,7 +37,9 @@
             <div class="form-field">
               <%= q.label for: g.name do %>
                 <%= g.name %>
-                <%= q.number_field g.id, in: 1..4 %>
+                <span class="horizontal-number-control">
+                  <%= q.number_field g.id, in: 1..4 %>
+                </span>
               <% end %>
             </div>
           <% end %>
