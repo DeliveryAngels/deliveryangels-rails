@@ -1,0 +1,11 @@
+spaghetti:
+  name: Spaghetti
+  category: pasta
+
+white_bread:
+  name: White bread
+  category: bread
+
+brown_bread:
+  name: Brown bread
+  category: bread
