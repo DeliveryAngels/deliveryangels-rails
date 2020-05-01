@@ -18,6 +18,7 @@ TimeSlot.create(code: '4', name: 'All-Day');
 toilet_roll = Category.create(name: 'Toilet roll');
       fruit = Category.create(name: 'Fruit');
  vegetables = Category.create(name: 'Vegetables');
+       meat = Category.create(name: 'Vegetables');
 
 Grocery.create(name: 'Spaghetti', category: pasta);
 Grocery.create(name: 'Penne', category: pasta);

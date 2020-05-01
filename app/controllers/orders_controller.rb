@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
-    @groceries = Grocery.all
+    @categories = Category.all
     @order = Order.new
   end
 
