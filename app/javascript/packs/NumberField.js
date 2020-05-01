@@ -13,13 +13,22 @@ class NumberField {
         let textNode = document.createTextNode(text)
         button.appendChild(textNode)
 
-        button.addEventListener('click', clicked)
+        button.addEventListener('click', clicked.bind(this))
         return button
     }
 
     createButtons() {
-        this.span.insertBefore(this.createButton('-', () => this.input.stepDown()), this.input)
-        this.span.insertBefore(this.createButton('+', () => this.input.stepUp()), null)
+        this.span.insertBefore(this.createButton('-', this.decrement), this.input)
+        this.span.insertBefore(this.createButton('+', this.increment), null)
+    }
+
+    increment() {
+        this.input.value = this.input.value || 0
+        this.input.stepUp()
+    }
+    decrement() {
+        this.input.value = this.input.value || 0
+        this.input.stepDown()
     }
 
     static ready() {
