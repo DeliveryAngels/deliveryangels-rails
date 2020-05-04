@@ -1,0 +1,11 @@
+<div class="region">
+  <h2>Confirm your items</h2>
+
+  <% @order.order_items.all.each do |order_item| %>
+
+    <%= order_item.quantity %> <%= order_item.name %><br />
+
+  <% end %>
+
+  <%= link_to 'Arrange delivery', order_delivery_path(@order), class: '-button' %>
+</div> <!-- .region -->

@@ -1,19 +1,19 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /orders
-  # GET /orders.json
   def index
     @orders = Order.all
   end
 
   # GET /orders/1
-  # GET /orders/1.json
   def show
   end
 
   # GET /orders/new
   def new
+    @categories = Category.all
     @order = Order.new
   end
 
@@ -22,43 +22,66 @@ class OrdersController < ApplicationController
   end
 
   # POST /orders
-  # POST /orders.json
   def create
+
     @order = Order.new(order_params)
 
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
-        format.json { render :show, status: :created, location: @order }
-      else
-        format.html { render :new }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+    get_quantities.each do |q|
+      unless q[:quantity].empty?
+        @order.order_items.build(
+          grocery_id: q[:grocery_id],
+          quantity: q[:quantity]
+        )
       end
+    end
+
+    if @order.save
+      redirect_to order_review_path(@order)
+    else
+      @groceries = Grocery.all
+      render :new
     end
   end
 
+  # GET /orders/1/review
+  def pending
+    @order = Order.find(params[:order_id])
+  end
+
   # PATCH/PUT /orders/1
-  # PATCH/PUT /orders/1.json
   def update
-    respond_to do |format|
-      if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
-        format.json { render :show, status: :ok, location: @order }
+
+    if stage == 'time_slot' && order_params[:time_slot_id].nil?
+      @order.errors.add(:base, "Please choose a time slot")
+      render :edit
+    end
+
+    if @order.update(order_params)
+      if stage == 'time_slot'
+        redirect_to order_pending_path(@order)
       else
-        format.html { render :edit }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+        redirect_to @order, notice: 'Order was successfully updated.'
       end
+    else
+      render :edit
     end
   end
 
   # DELETE /orders/1
-  # DELETE /orders/1.json
   def destroy
     @order.destroy
-    respond_to do |format|
-      format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to orders_url, notice: 'Order was successfully destroyed.'
+  end
+
+  # GET /orders/1/review/
+  def review
+    @order = Order.find_by_id(params[:order_id])
+  end
+
+  # GET /orders/1/delivery/
+  def delivery
+    @time_slots = TimeSlot.all
+    @order = Order.find(params[:order_id])
   end
 
   private
@@ -67,8 +90,23 @@ class OrdersController < ApplicationController
       @order = Order.find(params[:id])
     end
 
+    # get order process stage
+    def stage
+      params[:order][:stage]
+    end
+
     # Only allow a list of trusted parameters through.
     def order_params
-      params.fetch(:order, {})
+      params.require(:order).except(:quantities, :stage, :time_slot).permit(
+        :preferences, :quantities, :time_slot_id
+      )
+    end
+
+    def get_quantities
+      quantities = []
+      params[:order][:quantities].each do |grocery_id, quantity|
+        quantities << { grocery_id: grocery_id, quantity: quantity }
+      end
+      quantities
     end
 end

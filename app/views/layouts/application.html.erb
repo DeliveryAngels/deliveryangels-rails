@@ -11,6 +11,31 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <header>
+      <div class="region">
+        <span class="site-logo">
+          DeliveryAngels
+        </span>
+        <ul class="veganburger-menu">
+          <li><%= link_to "Log Out", destroy_user_session_path %></li>
+        </ul>
+      </div>
+    </header>
+
+    <section class="notices alerts">
+      <div class="container">
+        <!-- added for devise -->
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <!-- end added for devise -->
+      </div>
+    </section>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer></footer>
   </body>
 </html>

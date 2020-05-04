@@ -1,3 +1,0 @@
-describe Grocery do
-
-end

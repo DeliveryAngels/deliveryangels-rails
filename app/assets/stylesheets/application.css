@@ -22,6 +22,11 @@ html {
   box-sizing: border-box;
 }
 
+body {
+  padding: 0;
+  margin: 0;
+}
+
 /*
   Background Colours
 */
@@ -67,7 +72,7 @@ h1, h2 {
 }
 
 label {
-  font-weight: 700;
+  font-weight: 400;
 }
 
 p, ul li, span {
@@ -86,7 +91,7 @@ strong.green {
   color: #84BD57;
 }
 
-/* 
+/*
   List styles
 */
 
@@ -98,14 +103,18 @@ section ul li:before {
   color: #64D8EF;
   content: "\2022";
   display: inline-block;
-  width: 1em; 
+  width: 1em;
 }
 
 /*
   Button Styles
 */
 
-input.button, a.-button {
+input.-button {
+
+}
+
+input[type="submit"], input.-button, a.-button {
   background-color: #D94B50;
   color: #fff;
   border-radius: 30px;
@@ -113,6 +122,7 @@ input.button, a.-button {
   font-weight: 700;
   font-size: 1.8rem;
   padding: 5px 25px;
+  border: 1px solid #D94B50;
 }
 
 .pointer {
@@ -128,16 +138,16 @@ input.button, a.-button {
 /*
   Scaffolding styles
 */
-section {
+section, header, footer {
   width: 100%;
 }
 
-.region {
+/*.region {
   margin: 0 auto;
   width: 900px;
-}
+}*/
 
-@media (max-width: 1050px) { 
+/*@media (max-width: 1050px) {
   .region {
     margin: 0 auto;
     width: 400px;
@@ -152,12 +162,21 @@ section {
   }
 
 }
-
-@media (max-width: 400px) { 
+*/
+/*@media (max-width: 400px) { */
   .region {
-    margin: 0 auto;
-    width: 400px;
     padding: 40px 40px;
+  }
+
+  .container, .region {
+  margin: 0 auto;
+    width: 400px;
+    border-left: 0.5px solid grey;
+    border-right: 0.5px solid grey;
+  }
+  .container {
+    padding-left: 40px;
+    padding-right: 40px;
   }
   .region-header {
     padding: 0px 40px;
@@ -167,7 +186,7 @@ section {
     max-width:18rem;
   }
 
-}
+/*}*/
 
 
 /*
@@ -186,6 +205,18 @@ input {
   max-width: 100%;
 }
 
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  border: 1px solid grey;
+  border-radius: 10px;
+  height: 4.5rem;
+  padding-left: 1rem;
+    font-family: 'Open Sans', sans-serif;
+
+}
+
 
 /*
   Navigation
@@ -194,7 +225,72 @@ input {
 
 header {
   height: 70px;
+  border-bottom: 1px solid grey;
+}
+
+header .region {
+  display: grid;
+  grid-template-columns: 50% 50%;
 }
 
 
 
+
+footer {
+  height: 20px;
+  background-color: #00354E;
+}
+
+
+ul.veganburger-menu {
+  padding:0;
+  margin:0;
+}
+ul.veganburger-menu li {
+  list-style:none;
+}
+
+main {
+  min-height: 80vh;
+}
+
+.category-fields div {
+  border-bottom: 0.5px solid grey;
+  padding: 3rem 0;
+}
+
+
+
+
+
+.category-fields-header {
+  background-color: #00354E;
+  height: 5.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.category-fields-header .container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.category-fields-header span {
+  color: #fff;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.category-header {
+  font-size: 2.6rem;
+  color: #00354E;
+}
+
+/*
+  headings
+*/
+
+h2.pick-items {
+  font-size: 3.2rem;
+}
