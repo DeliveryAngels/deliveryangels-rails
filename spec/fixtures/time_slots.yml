@@ -1,1 +1,7 @@
-time_slots.yml
+am:
+  name: Morning
+  code: 1
+
+pm:
+  name: Afternoon
+  code: 2

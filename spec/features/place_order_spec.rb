@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature "a vulnerable person places an order for groceries" do
-  fixtures :groceries, :categories, :users
+  fixtures :groceries, :categories, :users, :time_slots
 
   scenario "everything goes to plan" do
 
@@ -53,14 +53,11 @@ feature "a vulnerable person places an order for groceries" do
     expect(page).to have_content("Arrange delivery")
 
     # and I choose the morning
-    choose '#order_time_slot_1'
+    page.find_by_id(page.find(:label, text: "Morning")["for"]).click
     click_on "Confirm delivery time"
-    expect(Order.last.time_slot.name).to be("Morning")
-    expect(page).to have_content("Pending discussion");
-  end
 
-  scenario "I need to register" do
-    pending
+    expect(Order.last.time_slot.name).to eq("Morning")
+    expect(page).to have_content("Pending");
   end
 end
 

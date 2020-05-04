@@ -10,8 +10,8 @@
     <div class="region">
       <%= form_with model: @order do |f| %>
 
-        <fieldset class="radio-group-vertical">
-          <%= f.collection_radio_buttons :time_slot, @time_slots, :id, :name do |b| %>
+        <fieldset>
+          <%= f.collection_radio_buttons :time_slot_id, @time_slots, :id, :name do |b| %>
             <% b.label { b.radio_button + b.text } %>
           <% end %>
         </fieldset>

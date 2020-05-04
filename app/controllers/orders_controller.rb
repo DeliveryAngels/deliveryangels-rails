@@ -50,6 +50,12 @@ class OrdersController < ApplicationController
 
   # PATCH/PUT /orders/1
   def update
+
+    if stage == 'time_slot' && order_params[:time_slot_id].nil?
+      @order.errors.add(:base, "Please choose a time slot")
+      render :edit
+    end
+
     if @order.update(order_params)
       if stage == 'time_slot'
         redirect_to order_pending_path(@order)
@@ -91,8 +97,8 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).except(:quantities, :stage).permit(
-        :preferences, :quantities, :timeslot
+      params.require(:order).except(:quantities, :stage, :time_slot).permit(
+        :preferences, :quantities, :time_slot_id
       )
     end
 
