@@ -27,10 +27,12 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
 
     get_quantities.each do |q|
-      @order.order_items.build(
-        grocery_id: q[:grocery_id],
-        quantity: q[:quantity]
-      )
+      unless q[:quantity].empty?
+        @order.order_items.build(
+          grocery_id: q[:grocery_id],
+          quantity: q[:quantity]
+        )
+      end
     end
 
     if @order.save

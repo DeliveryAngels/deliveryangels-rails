@@ -1,12 +1,9 @@
 require 'rails_helper'
 
 feature "a vulnerable person places an order for groceries" do
+  fixtures :groceries, :categories, :users
+
   scenario "everything goes to plan" do
-
-    # Given that some types of Grocery exist
-
-    Grocery.create(name: 'White bread')
-    Grocery.create(name: 'Spaghetti')
 
     # when I go to the front page
     visit "/"
@@ -16,23 +13,21 @@ feature "a vulnerable person places an order for groceries" do
     # and I click on start shipping
     click_link "Start Shopping"
 
-    # I should be asked to register
-    expect(page).to have_content("Account sign-up")
+    # I should be asked to log-in
+    expect(page).to have_content("Account log-in")
 
-    # And I create an account
-    fill_in "First Name", with: "Carrie"
-    fill_in "Last Name", with: "Fisher"
-    fill_in "Email Address", with: "carrie.fisher@starwars.com"
-    fill_in "Phone Number", with: "07845 845845"
-    fill_in "Password", with: "hansolo"
-    fill_in "Confirm Password", with: "hansolo"
-    check "I have read and accept the terms and conditions"
-    click_on "Register account"
-    user = User.last
-    expect(user.first_name).to eq("Carrie")
-    expect(user.last_name).to eq("Fisher")
-    expect(user.email).to eq("carrie.fisher@starwars.com")
-    expect(user.phone).to eq("07845 845845")
+    # And I log-in
+
+    # And I enter that user's credentials
+    fill_in 'Email', with: users(:tom).email
+    fill_in 'Password', with: 'password'
+
+    # And I go to log in
+    click_button 'Log in'
+
+
+    # and I should be logged in
+    expect(page).to have_content("Signed in successfully.")
 
     # and I should be on the start shopping page
     expect(page).to have_content("Pick your items")
@@ -50,6 +45,8 @@ feature "a vulnerable person places an order for groceries" do
     expect(page).to have_content("Confirm your items")
     expect(page).to have_content("2 White bread")
     expect(page).to have_content("4 Spaghetti")
+    expect(page).to_not have_content("Brown bread")
+
 
     # everything looks good and I goto pick a time slot
     click_on "Arrange delivery"
@@ -61,4 +58,10 @@ feature "a vulnerable person places an order for groceries" do
     expect(Order.last.time_slot.name).to be("Morning")
     expect(page).to have_content("Pending discussion");
   end
+
+  scenario "I need to register" do
+    pending
+  end
 end
+
+
