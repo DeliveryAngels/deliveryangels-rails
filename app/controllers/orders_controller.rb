@@ -29,13 +29,13 @@ class OrdersController < ApplicationController
     @order = current_user.orders.new(order_params)
     @order.address = current_user.address
 
-    quantities.each do |q|
-      next if q[:quantity].empty?
-
-      @order.order_items.build(
-        grocery_id: q[:grocery_id],
-        quantity: q[:quantity],
-      )
+    get_quantities.each do |q|
+      unless q[:quantity].zero?
+        @order.order_items.build(
+          grocery_id: q[:grocery_id],
+          quantity: q[:quantity]
+        )
+      end
     end
 
     if @order.save
@@ -108,10 +108,11 @@ class OrdersController < ApplicationController
     )
   end
 
-  def quantities
+  def get_quantities
     quantities = []
+
     params[:order][:quantities].each do |grocery_id, quantity|
-      quantities << { grocery_id: grocery_id, quantity: quantity }
+      quantities << { grocery_id: grocery_id, quantity: quantity.to_i }
     end
     quantities
   end
