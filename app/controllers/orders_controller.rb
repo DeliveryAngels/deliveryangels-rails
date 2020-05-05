@@ -1,6 +1,9 @@
 class OrdersController < ApplicationController
+  include Devise::Controllers::Helpers
+
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :require_address, only: [:new]
 
   # GET /orders
   def index
@@ -14,7 +17,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @categories = Category.all
-    @order = Order.new
+    @order = current_user.orders.new
   end
 
   # GET /orders/1/edit
@@ -23,8 +26,8 @@ class OrdersController < ApplicationController
 
   # POST /orders
   def create
-
-    @order = Order.new(order_params)
+    @order = current_user.orders.new(order_params)
+    @order.address = current_user.address
 
     get_quantities.each do |q|
       unless q[:quantity].empty?
@@ -38,6 +41,7 @@ class OrdersController < ApplicationController
     if @order.save
       redirect_to order_review_path(@order)
     else
+      @user = current_user
       @groceries = Grocery.all
       render :new
     end
@@ -97,7 +101,9 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).except(:quantities, :stage, :time_slot).permit(
+      params.require(:order).except(
+        :quantities, :stage, :time_slot
+      ).permit(
         :preferences, :quantities, :time_slot_id
       )
     end
@@ -108,5 +114,9 @@ class OrdersController < ApplicationController
         quantities << { grocery_id: grocery_id, quantity: quantity }
       end
       quantities
+    end
+
+    def require_address
+      redirect_to new_address_path unless current_user.has_address?
     end
 end

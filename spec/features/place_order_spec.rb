@@ -16,7 +16,6 @@ feature "a vulnerable person places an order for groceries" do
     # I should be asked to log-in
     expect(page).to have_content("Account log-in")
 
-    # And I log-in
 
     # And I enter that user's credentials
     fill_in 'Email', with: users(:tom).email
@@ -25,11 +24,21 @@ feature "a vulnerable person places an order for groceries" do
     # And I go to log in
     click_button 'Log in'
 
-
     # and I should be logged in
     expect(page).to have_content("Signed in successfully.")
 
-    # and I should be on the start shopping page
+    # and I should be asked to select an address
+    expect(page).to have_content("Select your location")
+
+    fill_in 'First line', with: "10 Downing St"
+    fill_in 'Second line', with: "House of cards"
+    fill_in 'City', with: "London"
+    fill_in 'Postcode', with: "SW1A 2AA"
+
+    click_button "Pick your items"
+
+
+    # Then I should be on the start shopping page
     expect(page).to have_content("Pick your items")
     expect(page).to have_content("White bread")
 
@@ -59,6 +68,32 @@ feature "a vulnerable person places an order for groceries" do
     expect(Order.last.time_slot.name).to eq("Morning")
     expect(page).to have_content("Pending");
   end
+
+  # scenario "Shopper needs to register" do
+  #   # As a shopper
+  #   # I need to register with an address
+  #   # So that I can login, and my order will be delivered to my address
+
+  #   visit "/"
+
+  #   # and I click on start shipping
+  #   click_link "Start Shopping"
+
+  #   # I should be asked to log-in
+  #   expect(page).to have_content("Account log-in")
+  #   click_link "Sign up"
+
+  #   # And I enter that user's credentials
+  #   fill_in 'Email', with: "boris.johnson@gov.uk"
+  #   fill_in 'Password', with: 'password'
+
+  #   # and I should be logged in
+  #   expect(page).to have_content("Account created successfully.")
+
+  #   # and I should be on the start shopping page
+  #   expect(page).to have_content("Pick your items")
+  #   expect(page).to have_content("White bread")
+  # end
 end
 
 
