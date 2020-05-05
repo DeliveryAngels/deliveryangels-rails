@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     get 'delivery'
     get 'pending'
   end
+
+  resources :addresses
+
   get 'profile', action: :show, controller: 'users'
   root to: 'pages#home'
   resources :groceries, only: [:index]
