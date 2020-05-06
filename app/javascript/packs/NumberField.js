@@ -3,6 +3,7 @@ class NumberField {
         this.span = span
         this.input = span.querySelector('input')
         this.createButtons()
+        this.span.classList.add('activated')
     }
 
     createButton(text, clicked) {

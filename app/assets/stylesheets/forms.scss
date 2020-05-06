@@ -25,14 +25,16 @@ input {
     }
   }
 
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
+  &.activated {
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
 
-  input[type=number] {
-    -moz-appearance: textfield;
-    text-align: center;
+    input[type=number] {
+      -moz-appearance: textfield;
+      text-align: center;
+    }
   }
 }
