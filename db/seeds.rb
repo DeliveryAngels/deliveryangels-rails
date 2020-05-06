@@ -18,7 +18,7 @@ milk = Category.create(name: "Milk")
 dairy = Category.create(name: "Dairy")
 eggs = Category.create(name: "Eggs")
 toilet_roll = Category.create(name: "Toilet roll")
-fruit = Category.create(name: "Fruit")
+_fruit = Category.create(name: "Fruit")
 vegetables = Category.create(name: "Vegetables")
 meat = Category.create(name: "Vegetables")
 
