@@ -8,6 +8,6 @@ class DeliveriesController < ApplicationController
   protected
 
   def require_angel
-    redirect_to new_angel_session_path unless current_angel
+    redirect_to new_angel_session_path unless angel_signed_in?
   end
 end
