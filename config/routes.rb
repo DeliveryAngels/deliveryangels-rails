@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  Rails.application.routes.draw do
-    devise_for :users, controllers: {
-      sessions: "users/sessions",
-    }
-  end
+  devise_for :angels
+  devise_for :users, controllers: {
+    sessions: "users/sessions",
+  }
 
   resources :orders do
     get "review"
@@ -14,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :addresses
+  resources :deliveries
 
   get "profile", action: :show, controller: "users"
   root to: "pages#home"
