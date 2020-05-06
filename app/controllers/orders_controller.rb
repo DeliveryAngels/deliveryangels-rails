@@ -25,11 +25,11 @@ class OrdersController < ApplicationController
   def edit; end
 
   # POST /orders
-  def create
+  def create # rubocop:disable Metrics/AbcSize
     @order = current_user.orders.new(order_params)
     @order.address = current_user.address
 
-    get_quantities.each do |q|
+    quantities.each do |q|
       next if q[:quantity].empty?
 
       @order.order_items.build(
@@ -53,7 +53,7 @@ class OrdersController < ApplicationController
   end
 
   # PATCH/PUT /orders/1
-  def update
+  def update # rubocop:disable Metrics/AbcSize
     if stage == "time_slot" && order_params[:time_slot_id].nil?
       @order.errors.add(:base, "Please choose a time slot")
       render :edit
@@ -108,7 +108,7 @@ class OrdersController < ApplicationController
     )
   end
 
-  def get_quantities
+  def quantities
     quantities = []
     params[:order][:quantities].each do |grocery_id, quantity|
       quantities << { grocery_id: grocery_id, quantity: quantity }

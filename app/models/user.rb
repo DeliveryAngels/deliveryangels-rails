@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_one :address
   has_many :orders
 
-  def has_address?
+  def has_address? # rubocop:disable Naming/PredicateName
     address.present?
   end
 end
