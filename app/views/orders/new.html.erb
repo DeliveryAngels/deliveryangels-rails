@@ -35,12 +35,10 @@
         <div class="region category-fields category-<%= c.name.downcase %>-fields">
           <% c.groceries.each do |g| %>
             <div class="form-field">
-              <%= q.label for: g.name do %>
-                <%= g.name %>
+                <%= q.label g.id, g.name %>
                 <span class="horizontal-number-control">
                   <%= q.number_field g.id, in: 0..4, value: 0 %>
                 </span>
-              <% end %>
             </div>
           <% end %>
         </div> <!-- .category-fields .category-<%= c.name.downcase %>-fields -->
