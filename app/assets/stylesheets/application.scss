@@ -221,6 +221,11 @@ input[type="number"] {
   border: 0;
 }
 
+.category-fields .form-field {
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+
 
 /*
   Navigation
