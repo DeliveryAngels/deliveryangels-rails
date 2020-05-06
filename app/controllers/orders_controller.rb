@@ -29,14 +29,7 @@ class OrdersController < ApplicationController
     @order = current_user.orders.new(order_params)
     @order.address = current_user.address
 
-    get_quantities.each do |q|
-      unless q[:quantity].zero?
-        @order.order_items.build(
-          grocery_id: q[:grocery_id],
-          quantity: q[:quantity]
-        )
-      end
-    end
+    grocery_id_quantities.each { |id_quantity| @order.order_items.build(**id_quantity) }
 
     if @order.save
       redirect_to order_review_path(@order)
@@ -108,13 +101,15 @@ class OrdersController < ApplicationController
     )
   end
 
-  def get_quantities
-    quantities = []
-
-    params[:order][:quantities].each do |grocery_id, quantity|
-      quantities << { grocery_id: grocery_id, quantity: quantity.to_i }
+  def grocery_id_quantities
+    order_quantity_params.each_with_object([]) do |(grocery_id, quantity), order_line|
+      quantity = quantity.to_i
+      order_line << { grocery_id: grocery_id, quantity: quantity } unless quantity.zero?
     end
-    quantities
+  end
+
+  def order_quantity_params
+    params.permit(order: { quantities: {} })[:order][:quantities].to_h
   end
 
   def require_address
