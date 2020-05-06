@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     sessions: "users/sessions",
     registrations: "users/registrations",
   }
-  devise_for :angels
+  devise_for :angels, controllers: {
+    registrations: "angels/registrations",
+  }
   devise_for :users, controllers: {
     sessions: "users/sessions",
   }
