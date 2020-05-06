@@ -9,7 +9,10 @@ Rails.application.routes.draw do
     }
   end
 
-  devise_for :angels
+
+  devise_for :angels, controllers: {
+    registrations: "angels/registrations",
+  }
 
   resources :orders do
     get "review"
