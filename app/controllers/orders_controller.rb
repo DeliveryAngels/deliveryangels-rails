@@ -61,8 +61,11 @@ class OrdersController < ApplicationController
     end
 
     if @order.update(order_params)
-      if stage == 'time_slot'
-        redirect_to order_pending_path(@order)
+      case stage
+        when 'review_order'
+          redirect_to order_delivery_path(@order)
+        when 'time_slot'
+          redirect_to order_pending_path(@order)
       else
         redirect_to @order, notice: 'Order was successfully updated.'
       end
