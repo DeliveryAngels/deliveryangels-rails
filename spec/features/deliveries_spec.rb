@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-describe "an angel who wants to deliver food to people" do
+describe "an angel who wants to deliver food to people", type: :feature do
   fixtures :angels, :users
 
   context "when not logged in" do
@@ -15,6 +15,7 @@ describe "an angel who wants to deliver food to people" do
   context "when logged in" do
     let!(:angel) { angels(:bob) }
     let!(:user) { users(:user_with_address) }
+    let!(:unassigned_order) { user.orders.create!(address: user.address) }
 
     before do
       user.orders.create!(angel: angel, address: user.address)
@@ -27,10 +28,16 @@ describe "an angel who wants to deliver food to people" do
     end
 
     it "includes a list of orders that have been accepted" do
-      expect(page).to have_content("Request 1")
-      expect(page).to have_content("Delivery for #{user.first_name}")
+      page.within("#accepted_deliveries") do
+        expect(page).to have_content("Delivery for #{user.first_name}")
+      end
     end
 
-    it "includes orders that need someone to deliver them"
+    it "includes orders that need someone to deliver them" do
+      page.within("#available_deliveries") do
+        expect(page).to have_content("Request 1")
+        expect(page).to have_content("Delivery for #{unassigned_order.user.first_name}")
+      end
+    end
   end
 end
