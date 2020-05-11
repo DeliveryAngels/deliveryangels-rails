@@ -14,4 +14,6 @@ class Angel < ApplicationRecord
   validates :postcode, presence: true
   validates :symptom_free, acceptance: { message: "for our user's safety we can not accept angels who are, or have recently been, symptomatic." } # rubocop:disable Metrics/LineLength
   validates :terms_and_conditions, acceptance: true
+
+  has_many :accepted_orders, class_name: "Order", inverse_of: :angel, foreign_key: :angel_id, dependent: :nullify
 end
