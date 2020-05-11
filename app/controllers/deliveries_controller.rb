@@ -5,6 +5,7 @@ class DeliveriesController < ApplicationController
 
   def index
     @accepted_orders = current_angel.accepted_orders
+    @available_orders = Order.available.all
   end
 
   protected
