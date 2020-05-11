@@ -3,7 +3,9 @@
 class DeliveriesController < ApplicationController
   before_action :require_angel
 
-  def index; end
+  def index
+    @accepted_orders = current_angel.accepted_orders
+  end
 
   protected
 

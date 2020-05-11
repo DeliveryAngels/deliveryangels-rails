@@ -70,7 +70,9 @@ ActiveRecord::Schema.define(version: 2020_05_21_154053) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "time_slot_id"
     t.bigint "address_id"
+    t.bigint "angel_id"
     t.index ["address_id"], name: "index_orders_on_address_id"
+    t.index ["angel_id"], name: "index_orders_on_angel_id"
     t.index ["time_slot_id"], name: "index_orders_on_time_slot_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -98,4 +100,5 @@ ActiveRecord::Schema.define(version: 2020_05_21_154053) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "orders", "angels"
 end
