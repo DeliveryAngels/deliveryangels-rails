@@ -1,24 +1,39 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Bootstrapping
 
-Things you may want to cover:
+These instructions assume an Ubuntu machine, specifically 20.04, but any recent
+version should probably work.
 
-* Ruby version
+```bash
+# Set up rbenv
+curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
+echo 'export PATH="~/.rbenv/bin:$PATH" >> ~/.bashrc
+echo 'eval $(rbenv init -)` >> ~/.bashrc
+source ~/.bashrc
 
-* System dependencies
+# Install the correct Ruby version
+rbenv install 2.6.5
+gem install bundler -v 2.1.4
 
-* Configuration
+# Install Yarn
+sudo curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+sudo sh -c "echo 'deb https://dl.yarnpkg.com/debian/ stable main' >> /etc/apt/sources.list"
+sudo apt update
+sudo apt install yarn
 
-* Database creation
+# Install Postgres, and configure it
+sudo apt install postgresql libpq-dev
+sudo -u postgres createuser $USER
+sudo -u postgres createdb $USER
 
-* Database initialization
+# Install application dependencies
+bundle install
+yarn install --check-files
 
-* How to run the test suite
+# Initial setup
+rake db:setup
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# And finally see if the specs pass
+rspec
+```

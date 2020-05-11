@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class OrdersController < ApplicationController
   include Devise::Controllers::Helpers
 
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: %i[show edit update destroy]
   before_action :authenticate_user!
   before_action :require_address, only: [:new]
 
@@ -11,8 +13,7 @@ class OrdersController < ApplicationController
   end
 
   # GET /orders/1
-  def show
-  end
+  def show; end
 
   # GET /orders/new
   def new
@@ -21,21 +22,20 @@ class OrdersController < ApplicationController
   end
 
   # GET /orders/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /orders
-  def create
+  def create # rubocop:disable Metrics/AbcSize
     @order = current_user.orders.new(order_params)
     @order.address = current_user.address
 
-    get_quantities.each do |q|
-      unless q[:quantity].empty?
-        @order.order_items.build(
-          grocery_id: q[:grocery_id],
-          quantity: q[:quantity]
-        )
-      end
+    quantities.each do |q|
+      next if q[:quantity].empty?
+
+      @order.order_items.build(
+        grocery_id: q[:grocery_id],
+        quantity: q[:quantity],
+      )
     end
 
     if @order.save
@@ -53,9 +53,8 @@ class OrdersController < ApplicationController
   end
 
   # PATCH/PUT /orders/1
-  def update
-
-    if stage == 'time_slot' && order_params[:time_slot_id].nil?
+  def update # rubocop:disable Metrics/AbcSize
+    if stage == "time_slot" && order_params[:time_slot_id].nil?
       @order.errors.add(:base, "Please choose a time slot")
       render :edit
     end
@@ -67,7 +66,7 @@ class OrdersController < ApplicationController
         when 'time_slot'
           redirect_to order_pending_path(@order)
       else
-        redirect_to @order, notice: 'Order was successfully updated.'
+        redirect_to @order, notice: "Order was successfully updated."
       end
     else
       render :edit
@@ -77,7 +76,7 @@ class OrdersController < ApplicationController
   # DELETE /orders/1
   def destroy
     @order.destroy
-    redirect_to orders_url, notice: 'Order was successfully destroyed.'
+    redirect_to orders_url, notice: "Order was successfully destroyed."
   end
 
   # GET /orders/1/review/
@@ -92,34 +91,35 @@ class OrdersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_order
-      @order = Order.find(params[:id])
-    end
 
-    # get order process stage
-    def stage
-      params[:order][:stage]
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_order
+    @order = Order.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def order_params
-      params.require(:order).except(
-        :quantities, :stage, :time_slot
-      ).permit(
-        :preferences, :quantities, :time_slot_id
-      )
-    end
+  # get order process stage
+  def stage
+    params[:order][:stage]
+  end
 
-    def get_quantities
-      quantities = []
-      params[:order][:quantities].each do |grocery_id, quantity|
-        quantities << { grocery_id: grocery_id, quantity: quantity }
-      end
-      quantities
-    end
+  # Only allow a list of trusted parameters through.
+  def order_params
+    params.require(:order).except(
+      :quantities, :stage, :time_slot
+    ).permit(
+      :preferences, :quantities, :time_slot_id
+    )
+  end
 
-    def require_address
-      redirect_to new_address_path unless current_user.has_address?
+  def quantities
+    quantities = []
+    params[:order][:quantities].each do |grocery_id, quantity|
+      quantities << { grocery_id: grocery_id, quantity: quantity }
     end
+    quantities
+  end
+
+  def require_address
+    redirect_to new_address_path unless current_user.has_address?
+  end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddressesController < ApplicationController
   before_action :authenticate_user!
 
@@ -23,5 +25,4 @@ class AddressesController < ApplicationController
       :first_line, :second_line, :city, :postcode
     )
   end
-
 end
