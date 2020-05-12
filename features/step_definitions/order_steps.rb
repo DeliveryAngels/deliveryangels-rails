@@ -77,3 +77,34 @@ end
 Then("I should see that my timeslot is confirmed") do
   expect(Order.last.time_slot.name).to eq("Morning")
 end
+
+Then("I should be able to change the quantitiy of the groceries") do
+  @current_user.orders.last.order_items.each do |i|
+
+  end
+
+  expect(page).to have_content("Quantities updated succesfully")
+end
+
+Given("I have an order with groceries") do
+  sign_in(:user_with_order_with_groceries)
+end
+
+When("I visit the order review page") do
+  visit order_review_path(@current_user.orders.last)
+end
+
+When("I change the quantity of a grocery") do
+  binding.pry
+  @current_user.orders.last.order_items.first.grocery.name
+  @current_user.orders.last.order_items.first.quantity
+  fill_in
+end
+
+Then("I should see that quantity has changed") do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then("I should be told that my order has been updated") do
+  pending # Write code here that turns the phrase above into concrete actions
+end
