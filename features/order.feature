@@ -20,8 +20,3 @@ Feature: Placing Orders
     When I choose my delivery slot
     Then I should see that my order is pending
     And I should see that my timeslot is confirmed
-
-
-
-
-
