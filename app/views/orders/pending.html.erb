@@ -1,3 +1,8 @@
 <div class="region">
   <h2>Pending</h2>
+
+  <% unless @order.preferences.empty? %>
+    <h3>Additional notes</h3>
+    <p><%= @order.preferences %>
+  <% end %>
 </div> <!-- .region -->

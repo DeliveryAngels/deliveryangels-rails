@@ -7,5 +7,19 @@
 
   <% end %>
 
-  <%= link_to 'Arrange delivery', order_delivery_path(@order), class: '-button' %>
+  <%= form_with model: @order do |f| %>
+
+      <div class="form-field">
+        <%= f.label :preferences, "Additional notes" %>
+        <%= f.text_area :preferences %>
+      </div>
+
+      <div class="form-field">
+        <%= f.submit "Arrange delivery", class: '-button' %>
+      </div>
+
+        <%= f.hidden_field :stage, value: "review_order" %>
+
+  <% end %>
+
 </div> <!-- .region -->
