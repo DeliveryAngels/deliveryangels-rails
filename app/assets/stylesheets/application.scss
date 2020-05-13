@@ -214,7 +214,16 @@ input[type="password"] {
   height: 4.5rem;
   padding-left: 1rem;
     font-family: 'Open Sans', sans-serif;
+}
 
+input[type="number"] {
+  width: 3rem;
+  border: 0;
+}
+
+.category-fields .form-field {
+  display: grid;
+  grid-template-columns: 70% 30%;
 }
 
 
