@@ -8,7 +8,7 @@ RSpec.describe OrdersController, type: :controller do
 
     context "with a signed-in user" do
 
-      fixtures :addresses, :users, :time_slots, :orders, :groceries, :order_items
+      fixtures :users, :addresses, :time_slots, :orders, :groceries, :order_items
 
       before do
         sign_in users(:user_with_order_with_groceries)
