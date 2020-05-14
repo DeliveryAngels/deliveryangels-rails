@@ -1,10 +1,18 @@
 <div class="region">
   <h2>Confirm your items</h2>
 
-  <% @order.order_items.all.each do |order_item| %>
+  <%= form_with model: @order do |f| %>
 
-    <%= order_item.quantity %> <%= order_item.name %><br />
+    <% @order.order_items.all.each do |oi| %>
+        <div class="form-field">
+            <%= f.label oi.id, oi.grocery.name %>
+            <span class="horizontal-number-control">
+              <%= f.number_field oi.id, in: 0..4, value: oi.quantity %>
+            </span>
+        </div>
+    <% end %>
 
+    <%= f.submit "Update quantities" %>
   <% end %>
 
   <%= form_with model: @order do |f| %>

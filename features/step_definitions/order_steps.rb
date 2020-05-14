@@ -79,9 +79,9 @@ Then("I should see that my timeslot is confirmed") do
 end
 
 Then("I should be able to change the quantitiy of the groceries") do
-  @current_user.orders.last.order_items.each do |i|
+  # @current_user.orders.last.order_items.each do |i|
 
-  end
+  # end
 
   expect(page).to have_content("Quantities updated succesfully")
 end
@@ -95,14 +95,14 @@ When("I visit the order review page") do
 end
 
 When("I change the quantity of a grocery") do
-  binding.pry
-  @current_user.orders.last.order_items.first.grocery.name
+  grocery = @current_user.orders.last.order_items.first.grocery.name
   @current_user.orders.last.order_items.first.quantity
-  fill_in
+  fill_in grocery, with: "2"
+  click_on "Update quantities"
 end
 
 Then("I should see that quantity has changed") do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(page).to have_content("Quantities updated")
 end
 
 Then("I should be told that my order has been updated") do
