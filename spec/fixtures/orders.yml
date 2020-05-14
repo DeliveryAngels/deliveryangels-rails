@@ -3,5 +3,6 @@ order_without_groceries:
   user: user_with_order
 
 order_with_groceries:
-  time_slot_id: morning
+  time_slot: morning
   user: user_with_order_with_groceries
+  address_id: address_for_user_with_order_with_groceries

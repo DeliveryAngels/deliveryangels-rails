@@ -17,7 +17,7 @@ user_with_order:
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
 
 user_with_order_with_groceries:
-  first_name: Tom
-  last_name: Nook
+  first_name: Order with
+  last_name: Groceries
   email: tom.with.order.and.groceries@nook.inc
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
