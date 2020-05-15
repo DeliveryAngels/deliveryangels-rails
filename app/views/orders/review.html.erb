@@ -1,32 +1,32 @@
 <div class="region">
   <h2>Confirm your items</h2>
 
-  <%= form_with model: @order do |f| %>
+  <% @order.order_items.all.each do |oi| %>
 
-    <% @order.order_items.all.each do |oi| %>
-        <div class="form-field">
-            <%= f.label oi.id, oi.grocery.name %>
-            <span class="horizontal-number-control">
-              <%= f.number_field oi.id, in: 0..4, value: oi.quantity %>
-            </span>
-        </div>
+    <%= form_with model: oi do |f| %>
+      <div class="form-field">
+          <%= f.label oi.id, oi.grocery.name %>
+          <span class="horizontal-number-control">
+            <%= f.number_field :quantity, in: 0..4, value: oi.quantity %>
+          </span>
+      </div>
+      <div class="form-field">
+        <%= f.submit "Update quantities for " + oi.grocery.name %>
+      </div>
     <% end %>
-
-    <%= f.submit "Update quantities" %>
   <% end %>
 
   <%= form_with model: @order do |f| %>
+    <div class="form-field">
+      <%= f.label :preferences, "Additional notes" %>
+      <%= f.text_area :preferences %>
+    </div>
 
-      <div class="form-field">
-        <%= f.label :preferences, "Additional notes" %>
-        <%= f.text_area :preferences %>
-      </div>
+    <div class="form-field">
+      <%= f.submit "Arrange delivery", class: '-button' %>
+    </div>
 
-      <div class="form-field">
-        <%= f.submit "Arrange delivery", class: '-button' %>
-      </div>
-
-        <%= f.hidden_field :stage, value: "review_order" %>
+    <%= f.hidden_field :stage, value: "review_order" %>
 
   <% end %>
 

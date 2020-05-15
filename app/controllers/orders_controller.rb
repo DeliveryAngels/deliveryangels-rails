@@ -52,9 +52,17 @@ class OrdersController < ApplicationController
       render :edit
     end
 
+    binding.pry
+
+    if order_params[:order_items].present?
+      binding.pry
+      @order.build()
+    end
+
     if @order.update(order_params)
       case stage
       when 'review_order'
+
         redirect_to order_delivery_path(@order)
       when 'time_slot'
         redirect_to order_pending_path(@order)
@@ -100,7 +108,7 @@ class OrdersController < ApplicationController
     params.require(:order).except(
       :quantities, :stage, :time_slot
     ).permit(
-      :preferences, :quantities, :time_slot_id
+      :preferences, :quantities, :time_slot_id, order_items: {}
     )
   end
 

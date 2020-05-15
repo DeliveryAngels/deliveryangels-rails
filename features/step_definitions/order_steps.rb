@@ -98,7 +98,7 @@ When("I change the quantity of a grocery") do
   grocery = @current_user.orders.last.order_items.first.grocery.name
   @current_user.orders.last.order_items.first.quantity
   fill_in grocery, with: "2"
-  click_on "Update quantities"
+  click_on "Update quantities for " + grocery
 end
 
 Then("I should see that quantity has changed") do
