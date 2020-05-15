@@ -48,16 +48,17 @@ end
 
 Then("I should be asked to confirm my groceries") do
   expect(page).to have_content("Confirm your items")
-  expect(page).to have_content("2 White bread")
-  expect(page).to have_content("4 Spaghetti")
-  expect(page).not_to have_content("Brown bread")
+
+  within(
+    first(:label, "White bread").find(:xpath, 'ancestor::form')
+  ) do
+    expect(find_field("White bread").value).to eq("2")
+  end
+
+  expect(page).not_to have_field("Brown bread")
 end
 
 When("I confirm my groceries") do
-  expect(page).to have_content("Confirm your items")
-  expect(page).to have_content("2 White bread")
-  expect(page).to have_content("4 Spaghetti")
-  expect(page).not_to have_content("Brown bread")
   click_on "Arrange delivery"
 end
 
@@ -95,14 +96,20 @@ When("I visit the order review page") do
 end
 
 When("I change the quantity of a grocery") do
-  grocery = @current_user.orders.last.order_items.first.grocery.name
+  @item = @current_user.orders.last.order_items.first
+  @grocery = @item.grocery.name
   @current_user.orders.last.order_items.first.quantity
-  fill_in grocery, with: "2"
-  click_on "Update quantities"
+  within("form#" + @item.id.to_s) do
+    fill_in @grocery, with: "2"
+    click_on "Update quantities"
+  end
 end
 
 Then("I should see that quantity has changed") do
-  expect(page).to have_content("Quantities updated")
+  expect(page).to have_content(@grocery + " was updated.")
+  within("form#" + @item.id.to_s) do
+    expect(find_field(@grocery).value).to eq("2")
+  end
 end
 
 Then("I should be told that my order has been updated") do

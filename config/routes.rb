@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+
   Rails.application.routes.draw do
     devise_for :users, controllers: {
       sessions: "users/sessions",
@@ -12,6 +13,8 @@ Rails.application.routes.draw do
     get "delivery"
     get "pending"
   end
+
+  resources :order_items, only: [:update]
 
   resources :addresses
 

@@ -1,6 +1,6 @@
 spaghetti_with_quantity_2:
   grocery: spaghetti
-  quantity: 2
+  quantity: 1
   order: order_with_groceries
 
 white_bread_with_quantitiy_1:
