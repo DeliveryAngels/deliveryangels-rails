@@ -3,7 +3,7 @@
 
   <% @order.order_items.all.each do |oi| %>
 
-    <%= form_with model: oi, id: oi.id do |f| %>
+    <%= form_with model: oi, id: oi.id, remote: true do |f| %>
       <div class="form-field">
           <%= f.label :quantity, oi.grocery.name %>
           <span class="horizontal-number-control">
