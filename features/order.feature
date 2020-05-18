@@ -26,4 +26,4 @@ Feature: Placing Orders
     When I visit the order review page
     And I change the quantity of a grocery
     Then I should see that quantity has changed
-    And I should be told that my order has been updated
+

@@ -52,10 +52,7 @@ class OrdersController < ApplicationController
       render :edit
     end
 
-    binding.pry
-
     if order_params[:order_items].present?
-      binding.pry
       @order.build()
     end
 

@@ -48,6 +48,7 @@ end
 
 Then("I should be asked to confirm my groceries") do
   expect(page).to have_content("Confirm your items")
+  binding.pry
   expect(page).to have_content("2 White bread")
   expect(page).to have_content("4 Spaghetti")
   expect(page).not_to have_content("Brown bread")
@@ -95,14 +96,20 @@ When("I visit the order review page") do
 end
 
 When("I change the quantity of a grocery") do
-  grocery = @current_user.orders.last.order_items.first.grocery.name
+  @item = @current_user.orders.last.order_items.first
+  @grocery = @item.grocery.name
   @current_user.orders.last.order_items.first.quantity
-  fill_in grocery, with: "2"
-  click_on "Update quantities for " + grocery
+  within("form#" + @item.id.to_s) do
+    fill_in @grocery, with: "2"
+    click_on "Update quantities"
+  end
 end
 
 Then("I should see that quantity has changed") do
-  expect(page).to have_content("Quantities updated")
+  expect(page).to have_content(@grocery + " was updated.")
+  within("form#" + @item.id.to_s) do
+    expect(find_field(@grocery).value).to eq("2")
+  end
 end
 
 Then("I should be told that my order has been updated") do
