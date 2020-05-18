@@ -48,17 +48,17 @@ end
 
 Then("I should be asked to confirm my groceries") do
   expect(page).to have_content("Confirm your items")
-  binding.pry
-  expect(page).to have_content("2 White bread")
-  expect(page).to have_content("4 Spaghetti")
-  expect(page).not_to have_content("Brown bread")
+
+  within(
+    first(:label, "White bread").find(:xpath, 'ancestor::form')
+  ) do
+    expect(find_field("White bread").value).to eq("2")
+  end
+
+  expect(page).not_to have_field("Brown bread")
 end
 
 When("I confirm my groceries") do
-  expect(page).to have_content("Confirm your items")
-  expect(page).to have_content("2 White bread")
-  expect(page).to have_content("4 Spaghetti")
-  expect(page).not_to have_content("Brown bread")
   click_on "Arrange delivery"
 end
 
