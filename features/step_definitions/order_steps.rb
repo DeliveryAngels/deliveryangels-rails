@@ -79,14 +79,6 @@ Then("I should see that my timeslot is confirmed") do
   expect(Order.last.time_slot.name).to eq("Morning")
 end
 
-Then("I should be able to change the quantitiy of the groceries") do
-  # @current_user.orders.last.order_items.each do |i|
-
-  # end
-
-  expect(page).to have_content("Quantities updated succesfully")
-end
-
 Given("I have an order with groceries") do
   sign_in(:user_with_order_with_groceries)
 end
@@ -104,18 +96,6 @@ When("I change the quantity of a grocery") do
     click_on "Update quantities"
   end
 end
-
-Then("I should see that quantity has changed") do
-  expect(page).to have_content(@grocery + " was updated.")
-  within("form#" + @item.id.to_s) do
-    expect(find_field(@grocery).value).to eq("2")
-  end
-end
-
-Then("I should be told that my order has been updated") do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
 
 Given(/^I have an order with (\d+) (.*)$/) do |quantity, product|
   sign_in(:user_with_address)

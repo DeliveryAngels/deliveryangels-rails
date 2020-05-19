@@ -21,12 +21,6 @@ Feature: Placing Orders
     Then I should see that my order is pending
     And I should see that my timeslot is confirmed
 
-  Scenario: Change the quantities of stuff in my shopping list
-    Given I have an order with groceries
-    When I visit the order review page
-    And I change the quantity of a grocery
-    Then I should see that quantity has changed
-
   Scenario: Increase the quantitiy by 1
     Given I have an order with 1 White bread
     When I visit the order review page
