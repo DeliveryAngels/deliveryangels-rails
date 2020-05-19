@@ -4,6 +4,14 @@ tom_nooks_address:
   city: Animal Crossing
   postcode: AC1 2AC
 
+
+address_for_user_with_address:
+  first_line: Tom's Island
+  second_line: Europe
+  city: Animal Crossing
+  postcode: AC1 2AC
+  user: user_with_address
+
 address_for_user_with_order_with_groceries:
   first_line: Order with
   second_line: Groceries
