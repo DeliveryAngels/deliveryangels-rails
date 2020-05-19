@@ -21,31 +21,33 @@ class OrderItemsController < ApplicationController
   end
 
   private
-    def set_item
-      @item ||= OrderItem.find(params[:id])
-    end
 
-    def set_order
-      @order ||= set_item.order
-    end
+  def set_item
+    @item ||= OrderItem.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def item_params
-      params.require(:order_item).permit(:id, :quantity)
-    end
+  def set_order
+    @order ||= set_item.order
+  end
 
-    def destroy(item)
-      item.destroy!
-      redirect_to(
-        order_review_path(@order),
-        notice: @item.grocery.name + ' was removed.'
-      )
-    end
+  # Only allow a list of trusted parameters through.
+  def item_params
+    params.require(:order_item).permit(:id, :quantity)
+  end
 
-    def update_item(item, quantity)
-      redirect_to(
-        order_review_path(@order),
-        notice: item.grocery.name + ' was updated.'
-      ) if item.update({ quantity: quantity })
-    end
+  def destroy(item)
+    item.destroy!
+    redirect_to(
+      order_review_path(@order),
+      notice: @item.grocery.name + ' was removed.'
+    )
+  end
+
+  def update_item(item, quantity)
+    redirect_to(
+      order_review_path(@order),
+      notice: item.grocery.name + ' was updated.'
+    ) if item.update({ quantity: quantity })
+  end
+
 end

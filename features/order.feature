@@ -39,7 +39,6 @@ Feature: Placing Orders
     And I press the - button
     Then I should see 1 White bread
 
-  @this
   Scenario: Decrease the quantitiy to 0
     Given I have an order with 1 White bread
     When I visit the order review page
