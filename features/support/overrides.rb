@@ -51,4 +51,3 @@ World(FixtureAccess)
 # rubocop:enable Metrics/MethodLength
 
 # rubocop:enable Metrics/AbcSize
-

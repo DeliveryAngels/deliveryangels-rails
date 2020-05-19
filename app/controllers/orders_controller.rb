@@ -52,17 +52,10 @@ class OrdersController < ApplicationController
       render :edit
     end
 
-    if order_params[:order_items].present?
-      @order.build()
-    end
-
     if @order.update(order_params)
       case stage
-      when 'review_order'
-
-        redirect_to order_delivery_path(@order)
-      when 'time_slot'
-        redirect_to order_pending_path(@order)
+      when "review_order" then redirect_to order_delivery_path(@order)
+      when "time_slot" then redirect_to order_pending_path(@order)
       else
         redirect_to @order, notice: "Order was successfully updated."
       end
@@ -93,6 +86,7 @@ class OrdersController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_order
     @order = Order.find(params[:id])
+    @order.build if order_params[:order_items].present?
   end
 
   # get order process stage

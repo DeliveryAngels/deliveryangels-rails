@@ -50,7 +50,7 @@ Then("I should be asked to confirm my groceries") do
   expect(page).to have_content("Confirm your items")
 
   within(
-    first(:label, "White bread").find(:xpath, 'ancestor::form')
+    first(:label, "White bread").find(:xpath, "ancestor::form"),
   ) do
     expect(find_field("White bread").value).to eq("2")
   end
@@ -103,12 +103,7 @@ Given(/^I have an order with (\d+) (.*)$/) do |quantity, product|
   @order = @current_user.orders.new
   @order.address = @current_user.address
   @grocery = Grocery.find_by_name(product)
-
-  @order.order_items.build({
-    quantity: quantity,
-    grocery: @grocery
-  })
-
+  @order.order_items.build(quantity: quantity, grocery: @grocery)
   @order.save
 end
 
