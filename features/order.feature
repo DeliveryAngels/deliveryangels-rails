@@ -27,3 +27,21 @@ Feature: Placing Orders
     And I change the quantity of a grocery
     Then I should see that quantity has changed
 
+  Scenario: Increase the quantitiy by 1
+    Given I have an order with 1 White bread
+    When I visit the order review page
+    And I press the + button
+    Then I should see 2 White bread
+
+  Scenario: Decrease the quantitiy by 1
+    Given I have an order with 2 White bread
+    When I visit the order review page
+    And I press the - button
+    Then I should see 1 White bread
+
+  @this
+  Scenario: Decrease the quantitiy to 0
+    Given I have an order with 1 White bread
+    When I visit the order review page
+    And I press the - button
+    Then I should see that White bread has been removed from my order

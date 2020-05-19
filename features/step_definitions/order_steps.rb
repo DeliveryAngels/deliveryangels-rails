@@ -115,3 +115,44 @@ end
 Then("I should be told that my order has been updated") do
   pending # Write code here that turns the phrase above into concrete actions
 end
+
+
+Given(/^I have an order with (\d+) (.*)$/) do |quantity, product|
+  sign_in(:user_with_address)
+
+  @order = @current_user.orders.new
+  @order.address = @current_user.address
+  @grocery = Grocery.find_by_name(product)
+
+  @order.order_items.build({
+    quantity: quantity,
+    grocery: @grocery
+  })
+
+  @order.save
+end
+
+When("I press the + button") do
+  within("form#" + @order.order_items.first.id.to_s) do
+    click_on "+"
+  end
+end
+
+Then(/I should see (\d+) (.*)$/) do |quantity, product|
+  grocery = Grocery.find_by_name(product)
+
+  within("form#" + @order.order_items.first.id.to_s) do
+    expect(find_field(grocery.name).value).to eq(quantity.to_s)
+  end
+end
+
+When("I press the - button") do
+  within("form#" + @order.order_items.first.id.to_s) do
+    click_on "-"
+  end
+end
+
+Then(/^I should see that (.*) has been removed from my order$/) do |product|
+  expect(page).to have_content product + " was removed."
+  expect(@order.reload.order_items).to be_empty
+end

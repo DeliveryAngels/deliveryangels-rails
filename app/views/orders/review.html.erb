@@ -5,10 +5,16 @@
 
     <%= form_with model: oi, id: oi.id, remote: true do |f| %>
       <div class="form-field">
+        <%= f.submit "-" %>
+      </div>
+      <div class="form-field">
           <%= f.label :quantity, oi.grocery.name %>
-          <span class="horizontal-number-control">
+          <!-- <span class="horizontal-number-control"> -->
             <%= f.number_field :quantity, in: 0..4, value: oi.quantity %>
-          </span>
+          <!-- </span> -->
+      </div>
+      <div class="form-field">
+        <%= f.submit "+" %>
       </div>
       <div class="form-field">
         <%= f.submit "Update quantities" %>
