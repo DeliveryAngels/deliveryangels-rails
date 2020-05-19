@@ -1,7 +1,7 @@
 <div class="region">
   <h2>Confirm your items</h2>
 
-  <% @order.order_items.all.each do |oi| %>
+  <% @order.order_items.order(:id).each do |oi| %>
 
     <%= form_with model: oi, id: oi.id, remote: true do |f| %>
       <div class="form-field">
