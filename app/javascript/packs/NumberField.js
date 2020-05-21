@@ -33,10 +33,8 @@ class NumberField {
     }
 
     static ready() {
-        document.addEventListener("DOMContentLoaded", function(){
-            document.querySelectorAll('.horizontal-number-control')
-                .forEach(node => new NumberField(node))
-        });
+        document.querySelectorAll('.horizontal-number-control')
+            .forEach(node => new NumberField(node))
     }
 }
 
