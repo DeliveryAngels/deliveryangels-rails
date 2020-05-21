@@ -9,7 +9,7 @@ module Users
     def configure_sign_up_params
       devise_parameter_sanitizer.permit(
         :sign_up,
-        keys: %i[first_name last_name phone_number],
+        keys: %i[first_name last_name phone_number terms_and_conditions],
       )
     end
 

@@ -12,6 +12,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :phone_number, presence: true
+  validates :terms_and_conditions, acceptance: true
 
   def has_address? # rubocop:disable Naming/PredicateName
     address.present?

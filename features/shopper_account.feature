@@ -8,4 +8,3 @@ Feature: Placing Orders
     When I visit the signup page
     And I fill in my contact details
     Then I should have an account with those details
-

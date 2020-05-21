@@ -38,6 +38,11 @@
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
 
+    <div class="field">
+      <%= f.check_box :terms_and_conditions %>
+      <%= f.label :terms_and_conditions, "I have read and accept the  terms and conditions" %><br />
+    </div>
+
     <div class="actions">
       <%= f.submit "Register account" %>
     </div>

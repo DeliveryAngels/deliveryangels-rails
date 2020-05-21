@@ -15,12 +15,15 @@ When("I fill in my contact details") do
   fill_in("Phone number", with: @new_user[:phone_number])
   fill_in("Password", with: "123456")
   fill_in("Confirm password", with: "123456")
+  check "I have read and accept the  terms and conditions"
   click_on("Register account")
 end
 
 Then("I should have an account with those details") do
-  expect(User.last.first_name).to eq(@new_user[:first_name])
-  expect(User.last.last_name).to eq(@new_user[:last_name])
-  expect(User.last.phone_number).to eq(@new_user[:phone_number])
+  user = User.last
+  expect(user.first_name).to eq(@new_user[:first_name])
+  expect(user.last_name).to eq(@new_user[:last_name])
+  expect(user.phone_number).to eq(@new_user[:phone_number])
+  expect(user.terms_and_conditions).to be(true)
   expect(page).to have_content("You have signed up successfully.")
 end
