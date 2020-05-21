@@ -20,3 +20,21 @@ Feature: Placing Orders
     When I choose my delivery slot
     Then I should see that my order is pending
     And I should see that my timeslot is confirmed
+
+  Scenario: Increase the quantitiy by 1
+    Given I have an order with 1 White bread
+    When I visit the order review page
+    And I press the + button
+    Then I should see 2 White bread
+
+  Scenario: Decrease the quantitiy by 1
+    Given I have an order with 2 White bread
+    When I visit the order review page
+    And I press the - button
+    Then I should see 1 White bread
+
+  Scenario: Decrease the quantitiy to 0
+    Given I have an order with 1 White bread
+    When I visit the order review page
+    And I press the - button
+    Then I should see that White bread has been removed from my order

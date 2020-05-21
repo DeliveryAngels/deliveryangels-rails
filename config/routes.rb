@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     get "pending"
   end
 
+  resources :order_items, only: [:update]
+
   resources :addresses
 
   get "profile", action: :show, controller: "users"

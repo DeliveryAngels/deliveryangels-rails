@@ -1,24 +1,36 @@
 <div class="region">
   <h2>Confirm your items</h2>
 
-  <% @order.order_items.all.each do |order_item| %>
+  <% @order.order_items.order(:id).each do |oi| %>
 
-    <%= order_item.quantity %> <%= order_item.name %><br />
+    <%= form_with model: oi, id: oi.id, remote: true do |f| %>
+      <div class="form-field">
 
+        <%= f.submit "-" %>
+      </div>
+      <div class="form-field">
+          <%= f.label :quantity, oi.grocery.name %>
+          <!-- <span class="horizontal-number-control"> -->
+            <%= f.number_field :quantity, in: 0..4, value: oi.quantity %>
+          <!-- </span> -->
+      </div>
+      <div class="form-field">
+        <%= f.submit "+" %>
+      </div>
+    <% end %>
   <% end %>
 
   <%= form_with model: @order do |f| %>
+    <div class="form-field">
+      <%= f.label :preferences, "Additional notes" %>
+      <%= f.text_area :preferences %>
+    </div>
 
-      <div class="form-field">
-        <%= f.label :preferences, "Additional notes" %>
-        <%= f.text_area :preferences %>
-      </div>
+    <div class="form-field">
+      <%= f.submit "Arrange delivery", class: '-button' %>
+    </div>
 
-      <div class="form-field">
-        <%= f.submit "Arrange delivery", class: '-button' %>
-      </div>
-
-        <%= f.hidden_field :stage, value: "review_order" %>
+    <%= f.hidden_field :stage, value: "review_order" %>
 
   <% end %>
 

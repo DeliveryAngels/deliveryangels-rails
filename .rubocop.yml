@@ -9,6 +9,7 @@ AllCops:
     - script/cucumber
     - vendor/**/*
     - node_modules/**/*
+    - spec/rails_helper.rb
 
 # Fixed indentation means that we don't get multi-line
 # diffs because a single argument was added and all the

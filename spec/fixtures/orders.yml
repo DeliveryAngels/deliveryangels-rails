@@ -1,0 +1,8 @@
+order_without_groceries:
+  time_slot: morning
+  user: user_with_order
+
+order_with_groceries:
+  time_slot: morning
+  user: user_with_order_with_groceries
+  address: address_for_user_with_order_with_groceries

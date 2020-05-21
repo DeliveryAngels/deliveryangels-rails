@@ -48,16 +48,17 @@ end
 
 Then("I should be asked to confirm my groceries") do
   expect(page).to have_content("Confirm your items")
-  expect(page).to have_content("2 White bread")
-  expect(page).to have_content("4 Spaghetti")
-  expect(page).not_to have_content("Brown bread")
+
+  within(
+    first(:label, "White bread").find(:xpath, "ancestor::form"),
+  ) do
+    expect(find_field("White bread").value).to eq("2")
+  end
+
+  expect(page).not_to have_field("Brown bread")
 end
 
 When("I confirm my groceries") do
-  expect(page).to have_content("Confirm your items")
-  expect(page).to have_content("2 White bread")
-  expect(page).to have_content("4 Spaghetti")
-  expect(page).not_to have_content("Brown bread")
   click_on "Arrange delivery"
 end
 
@@ -76,4 +77,57 @@ end
 
 Then("I should see that my timeslot is confirmed") do
   expect(Order.last.time_slot.name).to eq("Morning")
+end
+
+Given("I have an order with groceries") do
+  sign_in(:user_with_order_with_groceries)
+end
+
+When("I visit the order review page") do
+  visit order_review_path(@current_user.orders.last)
+end
+
+When("I change the quantity of a grocery") do
+  @item = @current_user.orders.last.order_items.first
+  @grocery = @item.grocery.name
+  @current_user.orders.last.order_items.first.quantity
+  within("form#" + @item.id.to_s) do
+    fill_in @grocery, with: "2"
+    click_on "Update quantities"
+  end
+end
+
+Given(/^I have an order with (\d+) (.*)$/) do |quantity, product|
+  sign_in(:user_with_address)
+
+  @order = @current_user.orders.new
+  @order.address = @current_user.address
+  @grocery = Grocery.find_by_name(product)
+  @order.order_items.build(quantity: quantity, grocery: @grocery)
+  @order.save
+end
+
+When("I press the + button") do
+  within("form#" + @order.order_items.first.id.to_s) do
+    click_on "+"
+  end
+end
+
+Then(/I should see (\d+) (.*)$/) do |quantity, product|
+  grocery = Grocery.find_by_name(product)
+
+  within("form#" + @order.order_items.first.id.to_s) do
+    expect(find_field(grocery.name).value).to eq(quantity.to_s)
+  end
+end
+
+When("I press the - button") do
+  within("form#" + @order.order_items.first.id.to_s) do
+    click_on "-"
+  end
+end
+
+Then(/^I should see that (.*) has been removed from my order$/) do |product|
+  expect(page).to have_content product + " was removed."
+  expect(@order.reload.order_items).to be_empty
 end
