@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+$lightblue: #EFFBFD;
+
 html {
   font-size: 62.5%;
   font-family: 'Open Sans', sans-serif;
@@ -303,4 +306,14 @@ main {
 
 h2.pick-items {
   font-size: 3.2rem;
+}
+
+
+
+/*
+  Sign-up form
+*/
+
+div.shopper-form-fields {
+  background-color: $lightblue;
 }

@@ -2,9 +2,16 @@
 
   <h2>Sign up</h2>
 
+  <p>A few details so we know how to  contact you.</p>
+
+</div> <!-- .region -->
+
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
+<div class="shopper-form-fields region">
+
+    <h2>Contact details</h2>
     <div class="field">
       <%= f.label :first_name %><br />
       <%= f.text_field :first_name %>
@@ -18,11 +25,13 @@
     <div class="field">
       <%= f.label :email %><br />
       <%= f.email_field :email, autocomplete: "email" %>
+      <p class="explanation">We need this so you can create an  account to manage your orders.</p>
     </div>
 
     <div class="field">
       <%= f.label :phone_number %><br />
       <%= f.phone_field :phone_number %>
+      <p class="explanation">So a DeliveryAngel can contact you about your order.</p>
     </div>
 
     <div class="field">
@@ -37,11 +46,28 @@
       <%= f.label :password_confirmation, "Confirm password" %><br />
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
+</div> <!-- .shopper-form-fields .region -->
 
-    <div class="field">
-      <%= f.check_box :terms_and_conditions %>
-      <%= f.label :terms_and_conditions, "I have read and accept the  terms and conditions" %><br />
-    </div>
+<div class="region">
+    <div class="disclaimer">
+
+      <strong>Disclaimer</strong>
+
+      <p>
+        This is a pro-bono service. We hold no  responsibility for payments.
+      </p>
+
+      <span class="bold">We collect and process data when you:</span>
+      <ul>
+        <li>Register online or place an order for  any of our products or services.</li>
+        <li>Sign up to the delivery service as a  DeliveryAngel, shopper or store.</li>
+      </ul>
+
+      <div class="field">
+        <%= f.check_box :terms_and_conditions %>
+        <%= f.label :terms_and_conditions, "I have read and accept the  terms and conditions" %><br />
+      </div>
+    </div> <!-- .disclaimer -->
 
     <div class="actions">
       <%= f.submit "Register account" %>
