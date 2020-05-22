@@ -1,0 +1,6 @@
+{
+  "name": "DeliveryAngels",
+  "scripts": {
+    "postdeploy": "bundle exec rails db:schema:load db:seed"
+  }
+}
