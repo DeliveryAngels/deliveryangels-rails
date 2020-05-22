@@ -151,7 +151,13 @@ When("I click on the order") do
 end
 
 Then("I should information about the order") do
-  expect(page).to have_content("Order " + orders(:order_with_groceries).id.to_s)
+  order = orders(:order_with_groceries)
+
+  expect(page).to have_content(
+    "Order " + order.id.to_s,
+  )
+
+  expect(page).to have_content(order.preferences)
 end
 
 Given("another user has an order") do
@@ -161,4 +167,14 @@ end
 Then("I should only see my orders") do
   expect(page).to have_content(orders(:order_for_user_with_multiple_orders_3).id)
   expect(page).not_to have_content(orders(:order_with_groceries).id)
+end
+
+Then("I should see the groceries that I ordered") do
+  order = users(:user_with_order_with_groceries).orders.first
+
+  order.order_items.each do |item|
+    expect(page).to(
+      have_content(item.quantity.to_s + " " + item.grocery.name),
+    )
+  end
 end

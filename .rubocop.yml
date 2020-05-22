@@ -100,7 +100,7 @@ Style/StringLiterals:
 
 # Prevent annoying breakages because you forgot to add a comma
 Style/TrailingCommaInArguments:
-  EnforcedStyleForMultiline: comma
+  Enabled: false
 
 Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: comma

@@ -45,8 +45,10 @@ Feature: Placing Orders
     Then I should see a list of my orders
     And I should only see my orders
 
+  @this
   Scenario: View order
     Given I have an order with groceries
     When I visit the list of orders page
     And I click on the order
     Then I should information about the order
+    And I should see the groceries that I ordered
