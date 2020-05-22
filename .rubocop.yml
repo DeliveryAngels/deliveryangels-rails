@@ -198,3 +198,8 @@ RSpec/ExampleLength:
 RSpec/MultipleExpectations:
   Exclude:
     - 'spec/features/**/*.rb'
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - 'db/**/*.rb'
+    - 'features/**/*.rb'

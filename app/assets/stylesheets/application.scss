@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+$lightblue: #EFFBFD;
+
 html {
   font-size: 62.5%;
   font-family: 'Open Sans', sans-serif;
@@ -205,6 +208,7 @@ input {
   max-width: 100%;
 }
 
+input[type="tel"],
 input[type="text"],
 input[type="email"],
 input[type="password"] {
@@ -302,4 +306,14 @@ main {
 
 h2.pick-items {
   font-size: 3.2rem;
+}
+
+
+
+/*
+  Sign-up form
+*/
+
+div.shopper-form-fields {
+  background-color: $lightblue;
 }
