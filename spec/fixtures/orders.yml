@@ -6,3 +6,18 @@ order_with_groceries:
   time_slot: morning
   user: user_with_order_with_groceries
   address: address_for_user_with_order_with_groceries
+
+order_for_user_with_multiple_orders_1:
+  time_slot: morning
+  user: user_with_multiple_orders
+  address: address_for_user_with_multiple_orders
+
+order_for_user_with_multiple_orders_2:
+  time_slot: afternoon
+  user: user_with_multiple_orders
+  address: address_for_user_with_multiple_orders
+
+order_for_user_with_multiple_orders_3:
+  time_slot: evening
+  user: user_with_multiple_orders
+  address: address_for_user_with_multiple_orders

@@ -38,3 +38,15 @@ Feature: Placing Orders
     When I visit the order review page
     And I press the - button
     Then I should see that White bread has been removed from my order
+
+  Scenario: List of orders
+    Given I have some orders
+    When I visit the list of orders page
+    Then I should see a list of my orders
+    And I should only see my orders
+
+  Scenario: View order
+    Given I have an order with groceries
+    When I visit the list of orders page
+    And I click on the order
+    Then I should information about the order

@@ -14,13 +14,25 @@
 
     <header>
       <div class="region">
-        <span class="site-logo">
-          DeliveryAngels
-        </span>
-        <ul class="veganburger-menu">
-          <li><%= link_to "Log Out", destroy_user_session_path %></li>
-        </ul>
-      </div>
+        <div class="title-bar" data-responsive-toggle="example-animated-menu" data-hide-for="medium">
+          <button class="menu-icon" type="button" data-toggle></button>
+          <div class="title-bar-title">Menu</div>
+        </div>
+
+        <div class="top-bar" id="example-animated-menu" data-animate="hinge-in-from-top spin-out">
+          <div class="top-bar-left">
+            <ul class="dropdown menu" data-dropdown-menu>
+              <li class="menu-text">Delivery Angels</li>
+              <li>
+                <a href="#">User</a>
+                <ul class="menu vertical">
+                  <li><%= link_to "Log Out", destroy_user_session_path %></li>
+                  <li><%= link_to "My Orders", orders_path %></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
     </header>
 
     <section class="notices alerts">

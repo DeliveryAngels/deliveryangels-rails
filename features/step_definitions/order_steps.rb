@@ -131,3 +131,34 @@ Then(/^I should see that (.*) has been removed from my order$/) do |product|
   expect(page).to have_content product + " was removed."
   expect(@order.reload.order_items).to be_empty
 end
+
+Given("I have some orders") do
+  sign_in(:user_with_multiple_orders)
+end
+
+When("I visit the list of orders page") do
+  visit orders_path
+end
+
+Then("I should see a list of my orders") do
+  expect(page).to have_content(orders(:order_for_user_with_multiple_orders_1).id)
+  expect(page).to have_content(orders(:order_for_user_with_multiple_orders_2).id)
+  expect(page).to have_content(orders(:order_for_user_with_multiple_orders_3).id)
+end
+
+When("I click on the order") do
+  click_on "Show"
+end
+
+Then("I should information about the order") do
+  expect(page).to have_content("Order " + orders(:order_with_groceries).id.to_s)
+end
+
+Given("another user has an order") do
+  # handled by fixtures
+end
+
+Then("I should only see my orders") do
+  expect(page).to have_content(orders(:order_for_user_with_multiple_orders_3).id)
+  expect(page).not_to have_content(orders(:order_with_groceries).id)
+end
