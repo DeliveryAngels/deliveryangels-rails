@@ -3,17 +3,19 @@
 class OrdersController < ApplicationController
   include Devise::Controllers::Helpers
 
-  before_action :set_order, only: %i[show edit update destroy]
+  before_action :set_order, only: %i[edit update destroy]
   before_action :authenticate_user!
   before_action :require_address, only: [:new]
 
   # GET /orders
   def index
-    @orders = Order.all
+    @orders = current_user.orders.all
   end
 
   # GET /orders/1
-  def show; end
+  def show
+    @order = current_user.orders.find(params[:id])
+  end
 
   # GET /orders/new
   def new
@@ -42,7 +44,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/review
   def pending
-    @order = Order.find(params[:order_id])
+    @order = current_user.orders.find(params[:order_id])
   end
 
   # PATCH/PUT /orders/1
@@ -72,7 +74,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/review/
   def review
-    @order = Order.find_by_id(params[:order_id])
+    @order = current_user.orders.find(params[:order_id])
   end
 
   # GET /orders/1/delivery/
@@ -85,7 +87,7 @@ class OrdersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_order
-    @order = Order.find(params[:id])
+    @order = current_user.orders.find(params[:id])
     @order.build if order_params[:order_items].present?
   end
 

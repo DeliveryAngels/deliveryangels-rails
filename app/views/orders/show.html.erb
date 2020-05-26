@@ -1,4 +1,15 @@
-<p id="notice"><%= notice %></p>
+<div class="region">
+  <h1>Order <%= @order.id %></h1>
+    <ul>
+  <% @order.order_items.each do |item| %>
+      <li><%= item.quantity %> <%= item.grocery.name %></li>
+  <% end %>
+    </ul>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+    <% if @order.preferences %>
+      <h2>Preferences</h2>
+      <%= @order.preferences %>
+    <% end %>
+
+    <%= link_to 'Back', orders_path %>
+</div> <!-- .region -->

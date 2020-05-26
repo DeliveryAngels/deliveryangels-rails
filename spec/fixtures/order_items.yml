@@ -7,3 +7,18 @@ white_bread_with_quantitiy_1:
   grocery: white_bread
   quantity: 1
   order: order_with_groceries
+
+item_for_order_for_user_with_multiple_orders_1:
+  grocery: white_bread
+  quantity: 3
+  order: order_for_user_with_multiple_orders_1
+
+item_for_order_for_user_with_multiple_orders_2:
+  grocery: spaghetti
+  quantity: 2
+  order: order_for_user_with_multiple_orders_2
+
+item_for_order_for_user_with_multiple_orders_3:
+  grocery: white_bread
+  quantity: 4
+  order: order_for_user_with_multiple_orders_3
