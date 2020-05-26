@@ -3,7 +3,7 @@
 require "rails_helper"
 
 describe "an angel who wants to deliver food to people", type: :feature do
-  fixtures :angels, :users
+  fixtures :angels, :users, :addresses
 
   context "when not logged in" do
     it "sends them to the log in page" do
