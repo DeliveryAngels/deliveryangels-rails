@@ -10,9 +10,14 @@ require("channels")
 
 require("../stylesheets/application.scss")
 
+import { Foundation } from 'foundation-sites'
+import $ from "jquery"
+Foundation.addToJquery($)
+
 import { NumberField } from 'packs/NumberField.js'
 
 document.addEventListener('turbolinks:load', function() {
+    $(document).foundation()
     NumberField.ready()
 })
 
