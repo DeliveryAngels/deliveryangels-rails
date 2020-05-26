@@ -8,6 +8,8 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
+require("../stylesheets/application.scss")
+
 import { NumberField } from 'packs/NumberField.js'
 
 document.addEventListener('turbolinks:load', function() {
