@@ -103,10 +103,10 @@ Style/TrailingCommaInArguments:
   Enabled: false
 
 Style/TrailingCommaInArrayLiteral:
-  EnforcedStyleForMultiline: comma
+  Enabled: false
 
 Style/TrailingCommaInHashLiteral:
-  EnforcedStyleForMultiline: comma
+  Enabled: false
 
 # We're not programming on 1970s dumb terminals, so can accommodate
 # line lengths over 75 characters. 120 is a good limit to ensure
@@ -203,3 +203,4 @@ Style/FrozenStringLiteralComment:
   Exclude:
     - 'db/**/*.rb'
     - 'features/**/*.rb'
+

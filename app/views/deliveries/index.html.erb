@@ -1,0 +1,29 @@
+<div class="region" id="accepted_deliveries">
+    <h2>Accepted deliveries</h2>
+    <% @accepted_orders.each_with_index do |order, i| %>
+        <div class="region">
+            <header>
+                <h3>
+                    <span class="request-number">Request <%= i + 1 %></span>
+                    Delivery for <%= order.user.first_name %>
+                </h3>
+            </header>
+        </div>
+    <% end %>
+</div>
+
+<div class="region" id="available_deliveries">
+    <h2>Delivery requests</h2>
+    <p>You have <strong><%= @available_orders.count %> new requests</p>
+
+    <% @available_orders.each_with_index do |order, i| %>
+        <div class="region">
+            <header>
+                <h3>
+                    <span class="request-number">Request <%= i + 1 %></span>
+                    Delivery for <%= order.user.first_name %>
+                </h3>
+            </header>
+        </div>
+    <% end %>
+</div>

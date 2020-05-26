@@ -1,0 +1,88 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <div class="region">
+    <h2>A few details</h2>
+    <p>Before you become a <span class="delivery-angel">DeliveryAngel</span> we need a few details.</p>
+
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="emphasised-block">
+      <h3>Covid-19 symptoms</h3>
+      <p>Have you experience any of the following symptoms in the last 14 days?</p>
+      <ul>
+        <li>High temperature</li>
+        <li>Cough</li>
+        <li>Shortness of breath</li>
+      </ul>
+
+      <div class="field">
+        <%= f.check_box :symptom_free %>
+        <%= f.label :symptom_free, "I am symptom free" %>
+      </div>
+    </div>
+
+    <h3>Contact Details</h3>
+
+    <div class="field">
+      <%= f.label :first_name %><br />
+      <%= f.text_field :first_name, autocomplete: "given-name" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :last_name %><br />
+      <%= f.text_field :last_name, autocomplete: "family-name" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autocomplete: "email" %>
+      <p class="gdpr-justification">We use this to allow you to log in, and manage your deliveries.</p>
+    </div>
+    
+    <div class="field">
+      <%= f.label :phone_number %><br />
+      <%= f.text_field :phone_number, autocomplete: "tel" %>
+      <p class="gdpr-justification">We'll use this number to notify you of deliveries you might be able to help with.</p>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+  </div>
+
+  <div class="region alternate">
+    <h3>Delivery Details</h3>
+
+    <div class="field">
+      <%= f.label :postcode %><br />
+      <%= f.text_field :postcode, autocomplete: "postal-code" %>
+      <p class="gdpr-justification">We match you with local deliveries around your post code.</p>
+    </div>
+
+    <p><strong>[INSERT DELIVERY TIMES HERE]</strong></p>
+  </div>
+
+  <div class="region">
+    <h3>Disclaimer</h3>
+    <p>This is a pro-bono service. We hold no responsibility for payments.</p>
+
+    <div class="field">
+      <%= f.check_box :terms_and_conditions %>
+      <%= f.label :terms_and_conditions, "I have read and accept the terms and conditions" %>
+    </div>
+    
+    <div class="actions">
+      <%= f.submit "Register account" %>
+    </div>
+
+    <%= render "angels/shared/links" %>
+  </div>
+<% end %>
