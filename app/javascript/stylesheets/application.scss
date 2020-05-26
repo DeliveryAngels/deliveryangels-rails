@@ -1,33 +1,21 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+// https://github.com/foundation/foundation-sites/issues/11762#issuecomment-517613353
+
+@import '_settings';
+@import '~foundation-sites/scss/foundation';
+@import '~motion-ui/src/motion-ui';
+@import 'forms';
+@include foundation-everything;
+@include motion-ui-transitions;
+@include motion-ui-animations;
 
 $lightblue: #EFFBFD;
 
 html {
   font-size: 62.5%;
-  font-family: 'Open Sans', sans-serif;
 }
 
 * {
   box-sizing: border-box;
-}
-
-body {
-  padding: 0;
-  margin: 0;
 }
 
 /*
@@ -201,40 +189,8 @@ section.symptoms li {
 }
 
 /*
-  Forms
-*/
-
-input {
-  max-width: 100%;
-}
-
-input[type="tel"],
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-  width: 100%;
-  border: 1px solid grey;
-  border-radius: 10px;
-  height: 4.5rem;
-  padding-left: 1rem;
-    font-family: 'Open Sans', sans-serif;
-}
-
-input[type="number"] {
-  width: 3rem;
-  border: 0;
-}
-
-.category-fields .form-field {
-  display: grid;
-  grid-template-columns: 70% 30%;
-}
-
-
-/*
   Navigation
 */
-
 
 header {
   height: 70px;
