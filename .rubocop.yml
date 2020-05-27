@@ -199,6 +199,9 @@ RSpec/MultipleExpectations:
   Exclude:
     - 'spec/features/**/*.rb'
 
+RSpec/SubjectStub:
+  Enabled: false
+  
 Style/FrozenStringLiteralComment:
   Exclude:
     - 'db/**/*.rb'

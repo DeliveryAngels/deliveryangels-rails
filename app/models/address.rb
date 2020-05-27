@@ -17,13 +17,13 @@ class Address < ApplicationRecord
   belongs_to :user
 
   def geolocater
-    @geolocater ||= NullLocater.new
+    @geolocater ||= Rails.env.test? ? NullLocater.new : PostcodesClient.new
   end
 
   def update_location
     return true unless lat.nil?
 
-    location = geolocater.locate
+    location = geolocater.locate(postcode)
     self.lat = location[0]
     self.lng = location[1]
   end
