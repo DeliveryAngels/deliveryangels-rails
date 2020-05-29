@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="62px" height="60px" viewBox="0 0 62 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 8</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round">
+        <g id="Artboard" transform="translate(-1397.000000, -638.000000)" stroke-width="3">
+            <g id="Group-8" transform="translate(1398.000000, 640.000000)">
+                <path d="M46.2207,44.9813 L13.3217,44.9813 C11.5577,44.9813 10.0217,43.7813 9.5937,42.0713 L4.4347,21.4353 C4.1317,20.2223 5.0487,19.0483 6.2977,19.0483 L53.2427,19.0483 C54.4927,19.0483 55.4097,20.2223 55.1077,21.4353 L49.9487,42.0713 C49.5207,43.7813 47.9847,44.9813 46.2207,44.9813 Z" id="Stroke-1" stroke="#00354E"></path>
+                <line x1="9.6006" y1="19.0482" x2="25.3186" y2="0.1122" id="Stroke-2" stroke="#00354E" stroke-linecap="round"></line>
+                <line x1="49.9414" y1="19.0482" x2="34.2234" y2="0.1122" id="Stroke-3" stroke="#00354E" stroke-linecap="round"></line>
+                <line x1="19.0127" y1="19.0482" x2="22.3737" y2="44.9812" id="Stroke-4" stroke="#00354E"></line>
+                <line x1="40.5293" y1="19.0482" x2="37.1683" y2="44.9812" id="Stroke-5" stroke="#00354E"></line>
+                <line x1="8.3399" y1="32.015" x2="51.2009" y2="32.015" id="Stroke-6" stroke="#00354E"></line>
+                <line x1="0.5" y1="55.5424" x2="59.042" y2="55.5424" id="Stroke-7" stroke="#84BD57" stroke-linecap="round"></line>
+            </g>
+        </g>
+    </g>
+</svg>
