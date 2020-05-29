@@ -15,6 +15,7 @@
  */
 
 $lightblue: #EFFBFD;
+$lightgreen: #84BD57;
 
 html {
   font-size: 62.5%;
@@ -120,10 +121,6 @@ section ul li:before {
   Button Styles
 */
 
-input.-button {
-
-}
-
 input[type="submit"], input.-button, a.-button {
   background-color: #D94B50;
   color: #fff;
@@ -135,15 +132,21 @@ input[type="submit"], input.-button, a.-button {
   border: 1px solid #D94B50;
 }
 
-.pointer {
-  width: 1.1rem;
-  height: 1.1rem;
-  border-top: .21rem solid #84BD57;
-  border-right: .21rem solid #84BD57;
-  transform: rotate(45deg);
-  border-radius: 15%;
-}
+.-button::after {
+  content: "";
+  color: $lightgreen;
+  left: 2.2rem;
+  position: relative;
+  border-radius: 30px;
+  background-color: white;
+  width: 2rem;
+  height: 2rem;
+  display: inline-block;
+  padding: 0.5rem;
+  top: 0.8rem;
+  background-image: image-url('icons/chevron.svg');
 
+}
 
 /*
   Scaffolding styles
