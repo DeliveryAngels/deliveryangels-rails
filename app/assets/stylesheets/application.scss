@@ -121,7 +121,9 @@ section ul li:before {
   Button Styles
 */
 
-input[type="submit"], input.-button, a.-button {
+input[type="submit"],
+input.-button,
+a.-button {
   background-color: #D94B50;
   color: #fff;
   border-radius: 30px;
@@ -129,23 +131,12 @@ input[type="submit"], input.-button, a.-button {
   font-weight: 700;
   font-size: 1.8rem;
   padding: 5px 25px;
+  padding-right: 4.5rem;
   border: 1px solid #D94B50;
-}
-
-.-button::after {
-  content: "";
-  color: $lightgreen;
-  left: 2.2rem;
-  position: relative;
-  border-radius: 30px;
-  background-color: white;
-  width: 2rem;
-  height: 2rem;
-  display: inline-block;
-  padding: 0.5rem;
-  top: 0.8rem;
+  background-position: 97%;
+  background-repeat: no-repeat;
   background-image: image-url('icons/chevron.svg');
-
+  background-size: 2.8rem;
 }
 
 /*
