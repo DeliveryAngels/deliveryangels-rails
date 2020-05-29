@@ -13,7 +13,15 @@
 
 
 <div class="region">
-  <h2 class="pick-items">Pick your items</h2>
+
+  <h2 class="icon large">
+    <span>Pick your items</span>
+    <%= inline_svg_tag(
+          "icons/food.svg",
+          class: "icon",
+        )
+    %>
+  </h2>
 
   <p>Select the items you need most:</p>
 
@@ -24,7 +32,14 @@
 
       <% @categories.each do |c| %>
         <div class="container">
-          <h3 class="category-header category-header-<%= c.name.downcase %>"><%= c.name %></h3>
+          <h2 class="icon large">
+            <span><%= c.name %></span>
+            <%= inline_svg_tag(
+                  "icons/" + c.name.parameterize.underscore + ".svg",
+                  class: "icon",
+                )
+            %>
+          </h2>
         </div>
         <div class="category-fields-header">
           <div class="container">
@@ -35,6 +50,7 @@
         <div class="region category-fields category-<%= c.name.downcase %>-fields">
           <% c.groceries.each do |g| %>
             <div class="form-field">
+
                 <%= q.label g.id, g.name %>
                 <span class="horizontal-number-control">
                   <%= q.number_field g.id, in: 0..4, value: 0 %>
