@@ -9,7 +9,14 @@
   <section class="home-choices">
     <div class="choice container">
       <div class="region">
-        <h2>I need a delivery</h2>
+        <h2 class="icon large">
+          <span>I need a delivery</span>
+          <%= inline_svg_tag(
+                "icons/delivery_basket.svg",
+                class: "icon",
+              )
+          %>
+        </h2>
 
         <p>For vulnerable people (who have priority) and everyone else.</p>
 
@@ -17,13 +24,23 @@
 
       </div>
     </div>
+  </section>
+
+  <section class="home-choices  blue-bg">
     <div class="choice container">
       <div class="region">
-        <h2>I want to deliver</h2>
+        <h2 class="icon large">
+          <span>I want to deliver</span>
+          <%= inline_svg_tag(
+                "icons/deliver.svg",
+                class: "icon",
+              )
+          %>
+        </h2>
 
         <p>I am symptom free and want to be a Delivery Angel.</p>
 
-        <p><a class="-button" href="/deliveries">Start Delivering <div class="pointer"></div></a></p>
+        <p><a class="-button" href="/deliveries">Start Delivering</a></p>
 
       </div>
     </div>
