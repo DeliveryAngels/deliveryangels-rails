@@ -183,10 +183,7 @@ section, header, footer {
   .region-header {
     padding: 0px 40px;
   }
-  img.site-logo {
-    width: 100%;
-    max-width:18rem;
-  }
+
 
 /*}*/
 
@@ -235,21 +232,33 @@ input[type="number"] {
 
 
 /*
-  Navigation
+  Navigation & header
 */
 
 
 header {
   height: 70px;
   border-bottom: 1px solid grey;
+  padding-top: 1.5rem;
 }
 
-header .region {
+header .container {
   display: grid;
   grid-template-columns: 50% 50%;
 }
 
+.logo {
+  width: 100%;
+  background-repeat: no-repeat;
+  background-image: image-url('logo.svg');
+  display: block;
+  min-width: 1.8rem;
+  min-height: 2rem;
+}
 
+.logo a {
+  display: none;
+}
 
 
 footer {

@@ -6,6 +6,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap' %>
+    <%= stylesheet_link_tag 'application', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -13,8 +14,14 @@
   <body>
 
     <header>
-      <div class="region">
+      <div class="container">
+          <h1 class="logo">
+            <%= link_to "DeliveryAngels", root_path %>
+          </h1>
           <nav>
+            <i class="account icon">
+              <%= link_to "My account", profile_path %>
+            </i>
           </nav>
         </div>
     </header>
