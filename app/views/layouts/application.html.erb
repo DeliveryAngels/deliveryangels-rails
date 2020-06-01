@@ -14,28 +14,20 @@
   <body>
 
     <header>
-      <div class="container">
-          <h1 class="logo">
-            <%= link_to "DeliveryAngels", root_path %>
-          </h1>
-          <nav>
-            <i class="account icon">
-              <%= link_to "My account", profile_path %>
-            </i>
-          </nav>
-        </div>
+      <%= render "shared/navigation" %>
     </header>
 
-    <section class="notices alerts">
-      <div class="container">
-        <!-- added for devise -->
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-        <!-- end added for devise -->
-      </div>
-    </section>
-
     <main>
+
+      <section class="notices alerts">
+        <div class="container">
+          <!-- added for devise -->
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+          <!-- end added for devise -->
+        </div>
+      </section>
+
       <%= yield %>
     </main>
 

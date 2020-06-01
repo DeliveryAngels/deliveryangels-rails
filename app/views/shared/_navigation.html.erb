@@ -1,0 +1,28 @@
+<nav>
+    <div class="container">
+        <input id="responsive-menu" type="checkbox">
+        <label for="responsive-menu">
+          <i class="logo">
+            <span>DeliveryAngels</span>
+          </i> <span id="menu-icon"><i></i></span>
+        </label>
+        <div id="overlay"></div>
+        <ul>
+            <li><%= link_to "My account", profile_path %></li>
+        </ul>
+        <ul id="social-media">
+            <li>
+                <a href="https://twitter.com/">
+                    <i class="fab fa-twitter"></i>
+                    <span class="screen-reader-text">Twitter</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.github.com/deliveryangels/">
+                    <i class="fab fa-github"></i>
+                    <span class="screen-reader-text">Github</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

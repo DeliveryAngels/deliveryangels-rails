@@ -22,9 +22,12 @@ html {
   font-family: 'Open Sans', sans-serif;
 }
 
-* {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
 }
+
 
 body {
   padding: 0;
@@ -239,27 +242,8 @@ input[type="number"] {
 header {
   height: 70px;
   border-bottom: 1px solid grey;
-  padding-top: 1.5rem;
+  padding-top: 1.5rem ;
 }
-
-header .container {
-  display: grid;
-  grid-template-columns: 50% 50%;
-}
-
-.logo {
-  width: 100%;
-  background-repeat: no-repeat;
-  background-image: image-url('logo.svg');
-  display: block;
-  min-width: 1.8rem;
-  min-height: 2rem;
-}
-
-.logo a {
-  display: none;
-}
-
 
 footer {
   height: 20px;
@@ -341,4 +325,188 @@ h2.large, h2.large span {
 svg.icon {
   height: 9rem;
   width: 9rem;
+}
+
+
+
+/**
+ navigation example
+ **/
+
+@import url(https://use.fontawesome.com/releases/v5.0.6/css/all.css);
+
+.fab {
+  font-family: FontAwesome;
+}
+
+i.fab {
+  text-decoration: none;
+  font-style: normal;
+}
+
+nav .social-media a {
+  text-decoration: none;
+}
+
+.screen-reader-text {
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute !important;
+    width: 1px;
+}
+
+
+
+/************************************************/
+/****************** NAVIGATION ******************/
+/************************************************/
+nav {
+    background: white;
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+/*** INPUT ***/
+nav input {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+/*** LABEL ***/
+nav label {
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 93% 7%;
+}
+
+i.logo {
+  background-repeat: no-repeat;
+  background-image: image-url('logo.svg');
+  display: block;
+  min-width: 1.8rem;
+  min-height: 2rem;
+  max-width: 20rem;
+  margin-top: 0.8rem;
+}
+
+i.logo span {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+/* Hamburger Icon */
+#menu-icon i,
+#menu-icon i:before,
+#menu-icon i:after {
+    background: #fff;
+    border-radius: 0.2em;
+    height: 0.25rem;
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+}
+
+#menu-icon i {
+    display: inline-block;
+    max-width: 2rem;
+    position: relative;
+}
+
+#menu-icon i:before,
+#menu-icon i:after {
+    content: '';
+    left: 0;
+    position: absolute;
+}
+
+#menu-icon i:before {
+    top: -0.3em;
+}
+
+#menu-icon i:after {
+    bottom: -0.3em;
+}
+
+#menu-icon {
+  background: $lightgreen;
+  border-radius: 30px;
+  height: 4.5rem;
+  width: 4.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+/* Close Icon */
+nav input[type=checkbox]:checked + label #menu-icon i {
+    background: transparent;
+}
+
+nav input[type=checkbox]:checked + label #menu-icon i:before {
+    top: 0;
+    transform: rotate(-45deg);
+}
+
+nav input[type=checkbox]:checked + label #menu-icon i:after {
+    bottom: 0;
+    transform: rotate(45deg);
+}
+
+/*** MENU ***/
+/* Overlay */
+nav input:checked ~ #overlay {
+    background: #e5e5e5;
+    bottom: 0;
+    left: 0;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100vw;
+    z-index: -1;
+}
+
+/* List */
+nav ul {
+    font-size: 1.5em;
+    list-style: none;
+    margin: 0;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0;
+    text-align: center;
+}
+
+nav input:checked ~ ul {
+    margin: 1em;
+    max-height: inherit;
+    opacity: 1;
+}
+
+nav ul > li {
+    margin: 0.5em 0;
+}
+
+nav ul a {
+    color: #1d1f20!important;
+    text-decoration: none;
+}
+
+nav ul a:hover {
+    text-decoration: underline;
+}
+
+/* Social Media */
+nav ul#social-media > li {
+    display: inline-block;
+    font-size: 1.5em;
+    margin: 0.5em;
 }
