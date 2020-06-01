@@ -250,15 +250,6 @@ footer {
   background-color: #00354E;
 }
 
-
-ul.veganburger-menu {
-  padding:0;
-  margin:0;
-}
-ul.veganburger-menu li {
-  list-style:none;
-}
-
 main {
   min-height: 80vh;
 }
@@ -380,22 +371,25 @@ nav input {
 
 /*** LABEL ***/
 nav label {
-    cursor: pointer;
-    display: grid;
-    grid-template-columns: 93% 7%;
+  cursor: pointer;
 }
 
-i.logo {
+nav .container {
+  display: grid;
+  grid-template-columns: 93% 7%;
+}
+
+h1.logo {
   background-repeat: no-repeat;
   background-image: image-url('logo.svg');
   display: block;
-  min-width: 1.8rem;
-  min-height: 2rem;
+  // width: 1.8rem;
+  height: 3rem;
   max-width: 20rem;
   margin-top: 0.8rem;
 }
 
-i.logo span {
+h1.logo a {
   display: none;
   height: 0;
   width: 0;
@@ -446,43 +440,43 @@ i.logo span {
 
 /* Close Icon */
 nav input[type=checkbox]:checked + label #menu-icon i {
-    background: transparent;
+  background: transparent;
 }
 
 nav input[type=checkbox]:checked + label #menu-icon i:before {
-    top: 0;
-    transform: rotate(-45deg);
+  top: 0;
+  transform: rotate(-45deg);
 }
 
 nav input[type=checkbox]:checked + label #menu-icon i:after {
-    bottom: 0;
-    transform: rotate(45deg);
+  bottom: 0;
+  transform: rotate(45deg);
 }
 
 /*** MENU ***/
 /* Overlay */
 nav input:checked ~ #overlay {
-    background: #e5e5e5;
-    bottom: 0;
-    left: 0;
-    height: 100vh;
-    position: fixed;
-    right: 0;
-    top: 0;
-    width: 100vw;
-    z-index: -1;
+  background: #e5e5e5;
+  bottom: 0;
+  left: 0;
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100vw;
+  z-index: -1;
 }
 
 /* List */
 nav ul {
-    font-size: 1.5em;
-    list-style: none;
-    margin: 0;
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    padding: 0;
-    text-align: center;
+  font-size: 1.5em;
+  list-style: none;
+  margin: 0;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0;
+  text-align: center;
 }
 
 nav input:checked ~ ul {
