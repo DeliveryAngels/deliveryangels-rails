@@ -18,15 +18,21 @@
     </header>
 
     <main>
+      <% if notice || alert %>
+        <section class="notices alerts">
+          <div class="container">
+            <!-- added for devise -->
+            <% if notice %>
+              <p class="notice"><%= notice %></p>
+            <% end %>
 
-      <section class="notices alerts">
-        <div class="container">
-          <!-- added for devise -->
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
-          <!-- end added for devise -->
-        </div>
-      </section>
+            <% if alert %>
+            <p class="alert"><%= alert %></p>
+            <!-- end added for devise -->
+            <% end %>
+          </div>
+        </section>
+      <% end %>
 
       <%= yield %>
     </main>
