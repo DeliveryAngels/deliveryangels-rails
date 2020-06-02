@@ -6,7 +6,7 @@ class DeliveriesController < ApplicationController
   def index
     @location = [50.936870, -1.460181]
     @accepted_orders = current_angel.accepted_orders
-    @available_orders = Order.available.near(@location).all
+    @available_orders = Order.available.near(current_angel).all
   end
 
   protected
