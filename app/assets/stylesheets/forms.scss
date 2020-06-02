@@ -1,3 +1,7 @@
+$lightblue: #EFFBFD;
+$lightgreen: #84BD57;
+$darkblue: #00354E;
+
 .horizontal-number-control.activated input[type="number"] {
   max-width: 100%;
   height: 3rem;
@@ -38,3 +42,46 @@
     }
   }
 }
+
+
+form h2 {
+  font-size: 2.8rem;
+  color: #00354E;
+}
+
+form .field {
+  margin-bottom: 2.5rem;
+}
+
+form#new_user h2 {
+  text-align: center;
+}
+
+form#new_user .field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form label {
+  font-weight: bold;
+}
+
+
+form .field p {
+  font-size: 1.6rem;
+}
+
+form .field label {
+  margin-bottom: 1.5rem;
+}
+
+.disclaimer * {
+  font-size: 1.6rem;
+}
+
+.disclaimer strong:first-of-type {
+  text-transform: uppercase;
+  color: $lightgreen;
+}
+

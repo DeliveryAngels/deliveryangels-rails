@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="83px" height="88px" viewBox="0 0 83 88" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 12</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-210.000000, -139.000000)">
+            <g id="Group-12" transform="translate(211.000000, 140.000000)">
+                <polygon id="Fill-1" fill="#FFFFFF" points="0.5 85.5 68.824 85.5 68.824 0.5 0.5 0.5"></polygon>
+                <polygon id="Stroke-2" stroke="#00354E" stroke-width="3" stroke-linejoin="round" points="0.5 85.5 68.824 85.5 68.824 0.5 0.5 0.5"></polygon>
+                <line x1="11.9878" y1="20.1191" x2="46.9488" y2="20.1191" id="Stroke-3" stroke="#00354E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></line>
+                <line x1="11.9878" y1="32.1137" x2="46.9488" y2="32.1137" id="Stroke-4" stroke="#00354E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></line>
+                <line x1="11.9878" y1="44.1088" x2="46.9488" y2="44.1088" id="Stroke-5" stroke="#00354E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></line>
+                <line x1="11.9878" y1="56.1035" x2="46.9488" y2="56.1035" id="Stroke-6" stroke="#00354E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></line>
+                <line x1="11.9878" y1="68.6118" x2="46.9488" y2="68.6118" id="Stroke-7" stroke="#00354E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></line>
+                <polygon id="Fill-8" fill="#FFFFFF" points="57.8852 60.7421 46.9482 68.9631 46.9332 55.2821 68.7752 11.4751 79.7262 16.9351"></polygon>
+                <polygon id="Stroke-9" stroke="#84BD57" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="57.8852 60.7421 46.9482 68.9631 46.9332 55.2821 68.7752 11.4751 79.7262 16.9351"></polygon>
+                <line x1="46.9331" y1="55.2817" x2="57.8851" y2="60.7417" id="Stroke-10" stroke="#84BD57" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></line>
+                <line x1="66.0444" y1="16.9511" x2="76.9954" y2="22.4111" id="Stroke-11" stroke="#84BD57" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></line>
+            </g>
+        </g>
+    </g>
+</svg>
