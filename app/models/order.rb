@@ -7,5 +7,7 @@ class Order < ApplicationRecord
   belongs_to :angel, inverse_of: :accepted_orders, optional: true
   belongs_to :user
 
+  acts_as_mappable through: :address
+
   scope :available, -> { where("angel_id IS NULL") }
 end

@@ -21,7 +21,7 @@
             <header>
                 <h3>
                     <span class="request-number">Request <%= i + 1 %></span>
-                    Delivery for <%= order.user.first_name %>
+                    Delivery for <%= order.user.first_name %> (<%= pluralize order.address.distance_to(@location).round(2), "mile", "miles" %> away) 
                 </h3>
             </header>
         </div>
