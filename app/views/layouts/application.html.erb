@@ -5,49 +5,39 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <link rel="stylesheet" href='https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap' />
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap' %>
+    <%= stylesheet_link_tag 'application', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
 
     <header>
-      <div class="region">
-        <div class="title-bar" data-responsive-toggle="example-animated-menu" data-hide-for="medium">
-          <button class="menu-icon" type="button" data-toggle></button>
-          <div class="title-bar-title">Menu</div>
-        </div>
-
-        <div class="top-bar" id="example-animated-menu" data-animate="hinge-in-from-top spin-out">
-          <div class="top-bar-left">
-            <ul class="dropdown menu" data-dropdown-menu>
-              <li class="menu-text">Delivery Angels</li>
-              <li>
-                <a href="#">User</a>
-                <ul class="menu vertical">
-                  <li><%= link_to "Log Out", destroy_user_session_path %></li>
-                  <li><%= link_to "My Orders", orders_path %></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
+      <%= render "shared/navigation" %>
     </header>
 
-    <section class="notices alerts">
-      <div class="container">
-        <!-- added for devise -->
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-        <!-- end added for devise -->
-      </div>
-    </section>
-
     <main>
+      <% if notice || alert %>
+        <section class="notices alerts">
+          <div class="container">
+            <!-- added for devise -->
+            <% if notice %>
+              <p class="notice"><%= notice %></p>
+            <% end %>
+
+            <% if alert %>
+            <p class="alert"><%= alert %></p>
+            <!-- end added for devise -->
+            <% end %>
+          </div>
+        </section>
+      <% end %>
+
       <%= yield %>
     </main>
 
-    <footer></footer>
+    <footer>
+    </footer>
   </body>
 </html>

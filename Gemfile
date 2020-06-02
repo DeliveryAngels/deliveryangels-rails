@@ -11,6 +11,8 @@ gem "rails", "~> 6.0.2", ">= 6.0.2.2"
 gem "postgresql"
 # Use Puma as the app server
 gem "puma", "~> 4.1"
+# Use SCSS for stylesheets
+gem "sass-rails", ">= 6"
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem "webpacker", "~> 4.0"
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -62,4 +64,5 @@ end
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 gem "devise"
+gem "inline_svg"
 gem "typhoeus"
