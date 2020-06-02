@@ -7,6 +7,11 @@
 @include foundation-everything;
 @include motion-ui-transitions;
 @include motion-ui-animations;
+@include foundation-xy-grid-classes;
+
+.container {
+  @include xy-grid-container;
+}
 
 $lightblue: #EFFBFD;
 
@@ -125,61 +130,6 @@ input[type="submit"], input.-button, a.-button {
   border-radius: 15%;
 }
 
-
-/*
-  Scaffolding styles
-*/
-section, header, footer {
-  width: 100%;
-}
-
-/*.region {
-  margin: 0 auto;
-  width: 900px;
-}*/
-
-/*@media (max-width: 1050px) {
-  .region {
-    margin: 0 auto;
-    width: 400px;
-    padding: 40px 40px;
-  }
-  .region-header {
-    padding: 0px 40px;
-  }
-  img.site-logo {
-    width: 100%;
-    max-width:18rem;
-  }
-
-}
-*/
-/*@media (max-width: 400px) { */
-  .region {
-    padding: 40px 40px;
-  }
-
-  .container, .region {
-  margin: 0 auto;
-    width: 400px;
-    border-left: 0.5px solid grey;
-    border-right: 0.5px solid grey;
-  }
-  .container {
-    padding-left: 40px;
-    padding-right: 40px;
-  }
-  .region-header {
-    padding: 0px 40px;
-  }
-  img.site-logo {
-    width: 100%;
-    max-width:18rem;
-  }
-
-/*}*/
-
-
 /*
   Symptoms Section
 */
@@ -192,35 +142,13 @@ section.symptoms li {
   Navigation
 */
 
-header {
-  height: 70px;
+.top-bar {
   border-bottom: 1px solid grey;
 }
-
-header .region {
-  display: grid;
-  grid-template-columns: 50% 50%;
-}
-
-
-
 
 footer {
   height: 20px;
   background-color: #00354E;
-}
-
-
-ul.veganburger-menu {
-  padding:0;
-  margin:0;
-}
-ul.veganburger-menu li {
-  list-style:none;
-}
-
-main {
-  min-height: 80vh;
 }
 
 .category-fields div {
@@ -228,17 +156,12 @@ main {
   padding: 3rem 0;
 }
 
-
-
-
-
 .category-fields-header {
   background-color: #00354E;
   height: 5.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-
 }
 
 .category-fields-header .container {
@@ -259,17 +182,13 @@ main {
 /*
   headings
 */
-
 h2.pick-items {
   font-size: 3.2rem;
 }
 
-
-
 /*
   Sign-up form
 */
-
 div.shopper-form-fields {
   background-color: $lightblue;
 }
