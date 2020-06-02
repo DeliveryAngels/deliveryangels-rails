@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_21_154053) do
+ActiveRecord::Schema.define(version: 2020_05_27_194705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2020_05_21_154053) do
     t.string "city"
     t.string "postcode"
     t.bigint "user_id"
+    t.string "lng"
+    t.string "lat"
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
@@ -49,13 +51,13 @@ ActiveRecord::Schema.define(version: 2020_05_21_154053) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "category_id"
+    t.bigint "category_id"
     t.index ["category_id"], name: "index_groceries_on_category_id"
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.integer "order_id"
-    t.integer "grocery_id"
+    t.bigint "order_id"
+    t.bigint "grocery_id"
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -64,11 +66,11 @@ ActiveRecord::Schema.define(version: 2020_05_21_154053) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.text "preferences"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "time_slot_id"
+    t.bigint "time_slot_id"
     t.bigint "address_id"
     t.bigint "angel_id"
     t.index ["address_id"], name: "index_orders_on_address_id"
