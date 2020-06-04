@@ -201,9 +201,12 @@ RSpec/MultipleExpectations:
 
 RSpec/SubjectStub:
   Enabled: false
-  
+
 Style/FrozenStringLiteralComment:
   Exclude:
     - 'db/**/*.rb'
     - 'features/**/*.rb'
 
+Layout/IndentationConsistency:
+  Exclude:
+    - 'db/seeds.rb'

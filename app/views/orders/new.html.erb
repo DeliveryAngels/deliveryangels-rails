@@ -27,43 +27,50 @@
 
 </div> <!-- .region -->
 
+
   <%= form_with model: @order do |f| %>
     <%= f.fields_for :quantities do |q| %>
-
       <% @categories.each do |c| %>
-        <div class="container">
-          <h2 class="icon large">
-            <span><%= c.name %></span>
+        <div class="accordion row">
+          <input
+            id="<%= c.name.parameterize.underscore %>-accordion-menu"
+            type="checkbox"
+            name="accordion"
+            class="accordion-toggle"
+            />
+          <label
+            for="<%= c.name.parameterize.underscore %>-accordion-menu"
+            class="accordion-toggle"
+          >
             <%= inline_svg_tag(
-                  "icons/" + c.name.parameterize.underscore + ".svg",
-                  class: "icon",
-                )
+              "icons/" + c.name.parameterize.underscore + ".svg",
+              class: "icon medium",
+            )
             %>
-          </h2>
-        </div>
-        <div class="category-fields-header">
-          <div class="container">
-            <span>Item</span>
-            <span>Quantity</span>
-          </div>
-        </div>
-        <div class="region category-fields category-<%= c.name.downcase %>-fields">
-          <% c.groceries.each do |g| %>
-            <div class="form-field">
 
-                <%= q.label g.id, g.name %>
-                <span class="horizontal-number-control">
-                  <%= q.number_field g.id, in: 0..4, value: 0 %>
-                </span>
-            </div>
-          <% end %>
-        </div> <!-- .category-fields .category-<%= c.name.downcase %>-fields -->
-      <% end %>
+            <h3><%= c.name %></h3>
+
+            <span class="accordion-icon"><i></i></span>
+          </label>
+          <div class="category">
+            <%=
+              render partial: "orders/new/category", locals: { c: c, q: q }
+            %>
+          </div> <!-- .category -->
+        </div>
+      <% end %> <!-- fields for -->
     <% end %>
+
     <div class="region">
-      <div class="form-field">
+      <div class="disclaimer">
+        <strong>Please note</strong>
+        <p>Not all of the items you have selected may be available.</p>
+      </div>
+
+      <div class="field center actions">
         <%= f.submit "Confirm items", class: '-button' %>
       </div>
     </div> <!-- .region -->
+
   <% end %>
 
