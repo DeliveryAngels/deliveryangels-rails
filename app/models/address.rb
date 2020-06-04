@@ -5,6 +5,8 @@ class Address < ApplicationRecord
 
   belongs_to :user
 
+  before_save :update_location
+
   acts_as_mappable(
     default_units: :miles,
     default_formula: :sphere,

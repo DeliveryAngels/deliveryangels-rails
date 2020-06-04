@@ -21,6 +21,9 @@ class Angel < ApplicationRecord
   has_many :accepted_orders, class_name: "Order", inverse_of: :angel, foreign_key: :angel_id, dependent: :nullify
 
   include Geolocatable
+
+  before_save :update_location
+
   acts_as_mappable(
     default_units: :miles,
     default_formula: :sphere,

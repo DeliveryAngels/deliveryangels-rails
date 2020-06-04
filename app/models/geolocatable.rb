@@ -13,7 +13,6 @@ module Geolocatable
 
   def included(klass)
     klass.delegate :locate, to: :geolocater
-    klass.before_save :update_location
   end
 
   def geolocater
