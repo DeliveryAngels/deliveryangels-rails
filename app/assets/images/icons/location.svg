@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="69px" height="84px" viewBox="0 0 69 84" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 4</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-80.000000, -517.000000)">
+            <g id="Group-4" transform="translate(82.000000, 519.000000)">
+                <path d="M64.729,32.364 C64.729,47.818 40.537,72.838 33.984,79.331 C33.083,80.223 31.646,80.223 30.746,79.331 C24.193,72.838 0,47.818 0,32.364 C0,14.49 14.491,0 32.365,0 C50.239,0 64.729,14.49 64.729,32.364 Z" id="Stroke-1" stroke="#00354E" stroke-width="4" stroke-linejoin="round"></path>
+                <path d="M48.5463,32.364 C48.5463,41.301 41.3023,48.546 32.3643,48.546 C23.4273,48.546 16.1833,41.301 16.1833,32.364 C16.1833,23.427 23.4273,16.182 32.3643,16.182 C41.3023,16.182 48.5463,23.427 48.5463,32.364" id="Fill-2" fill="#FFFFFF"></path>
+                <path d="M48.5463,32.364 C48.5463,23.4329 41.2956,16.182 32.3648,16.182 C23.434,16.182 16.1833,23.4329 16.1833,32.364 C16.1833,41.2951 23.434,48.546 32.3648,48.546 C41.2956,48.546 48.5463,41.2951 48.5463,32.364 Z" id="Stroke-3" stroke="#84BD57" stroke-width="4" stroke-linejoin="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>

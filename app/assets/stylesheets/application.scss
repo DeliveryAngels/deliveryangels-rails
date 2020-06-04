@@ -144,6 +144,13 @@ a.-button {
   background-repeat: no-repeat;
   background-image: image-url('icons/chevron.svg');
   background-size: 2.8rem;
+  height: 3.7rem;
+  min-width: 23rem;
+}
+
+a.-button.secondary {
+  background-color: #ffffff;
+  color: #D94B50;
 }
 
 /*
@@ -627,4 +634,76 @@ input[name="accordion"] + label {
   height: 6rem;
   align-items: center;
   margin-bottom: 2.7rem;
+}
+
+/** deliveries **/
+
+.request > .header {
+  background-color: $lightblue;
+  height: 10.1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.request h3,
+.request > .header h3 + p {
+  font-size: 2.4rem;
+  font-weight: bold;
+}
+
+.request h3,
+.request h3 + p {
+  margin: 0;
+
+}
+
+.request h3 {
+  color: $lightgreen;
+}
+
+.request > .header h3 + p {
+
+}
+
+.request .body .row {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns:25% 75%;
+  padding: 4rem 4rem 0rem 4rem;
+}
+
+.request .body .row svg {
+  grid-area: 1 / 1 / 3 / 2;
+  max-width: 4.5rem;
+  max-height: 5rem;
+  align-self: start;
+}
+
+.request .body .row:nth-of-type(1):after {
+  content: "";
+  background: lightgrey;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  grid-column: 1 / span 2;
+  margin-top: 3rem;
+}
+
+.request .body .row:nth-of-type(2) {
+  margin-bottom: 4rem;
+  padding-top: 0;
+}
+
+.request .body .row .field {
+  grid-column: 1 / span 2;
+}
+
+.request .body .row .field > form,
+.request .body .row > .field,
+ {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
