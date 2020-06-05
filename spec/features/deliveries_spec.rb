@@ -15,7 +15,7 @@ describe "an angel who wants to deliver food to people", type: :feature do
   context "when logged in" do
     let!(:angel) { angels(:bob) }
     let!(:user) { users(:user_with_address) }
-    let!(:time_slot) { time_slots(:am) }
+    let!(:time_slot) { time_slots(:morning) }
     let!(:unassigned_order) do
       user.orders.create!(address: user.address, time_slot: time_slot)
     end
