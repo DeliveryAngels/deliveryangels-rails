@@ -10,25 +10,23 @@
   <% end %>
 </div>
 
-<!-- <div class="region" id="available_deliveries"> -->
+
+    <div class="region">
+      <h2 class="icon large">
+        <span>Delivery requests</span>
+        <%= inline_svg_tag(
+              "icons/deliver.svg",
+              class: "icon",
+            )
+        %>
+      </h2>
+      <p>
+        You have <strong><%= @available_orders.count %> new requests</strong>
+      </p>
+    </div>
 
 
-      <div class="region">
-        <h2 class="icon large">
-          <span>Delivery requests</span>
-          <%= inline_svg_tag(
-                "icons/deliver.svg",
-                class: "icon",
-              )
-          %>
-        </h2>
-        <p>
-          You have <strong><%= @available_orders.count %> new requests</strong>
-        </p>
-      </div>
-
-
-
+<div id="available_deliveries">
     <% @available_orders.each_with_index do |order, i| %>
     <div class="request">
       <div class="header">
@@ -91,4 +89,4 @@
     </div>
 
     <% end %>
-<!-- </div> -->
+</div>

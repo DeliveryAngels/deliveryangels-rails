@@ -5,3 +5,15 @@ am:
 pm:
   name: Afternoon
   code: 2
+
+morning:
+  name: Morning
+  code: 1
+
+afternoon:
+  name: Afternoon
+  code: 2
+
+evening:
+  name: Evening
+  code: 2
