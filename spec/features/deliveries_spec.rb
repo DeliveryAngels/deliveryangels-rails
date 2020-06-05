@@ -16,9 +16,9 @@ describe "an angel who wants to deliver food to people", type: :feature do
     let!(:angel) { angels(:bob) }
     let!(:user) { users(:user_with_address) }
     let!(:time_slot) { time_slots(:am) }
-    let!(:unassigned_order) {
+    let!(:unassigned_order) do
       user.orders.create!(address: user.address, time_slot: time_slot)
-    }
+    end
 
     before do
       user.orders.create!(
