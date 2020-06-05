@@ -228,7 +228,8 @@ input[type="number"] {
   border: 0;
 }
 
-.category-fields .form-field {
+.category-fields .form-field,
+.category-fields-header .container {
   display: grid;
   grid-template-columns: 70% 30%;
 }
@@ -263,10 +264,6 @@ main {
   padding: 3rem 0;
 }
 
-
-
-
-
 .category-fields-header {
   background-color: #00354E;
   height: 5.5rem;
@@ -276,10 +273,6 @@ main {
 
 }
 
-.category-fields-header .container {
-  display: grid;
-  grid-template-columns: 50% 50%;
-}
 .category-fields-header span {
   color: #fff;
   font-weight: 700;
@@ -320,6 +313,17 @@ h2.large, h2.large span {
 svg.icon {
   height: 9rem;
   width: 9rem;
+}
+
+
+svg.icon.medium {
+  height: 6rem;
+  width: 6rem;
+}
+
+
+svg.icon.small {
+
 }
 
 
@@ -447,16 +451,16 @@ header nav h1 i.logo {
 }
 
 /* Close Icon */
-nav input[type=checkbox]:checked + label #menu-icon i {
+nav input[name="veganburger"]:checked + label #menu-icon i {
   background: transparent;
 }
 
-nav input[type=checkbox]:checked + label #menu-icon i:before {
+nav input[name="veganburger"]:checked + label #menu-icon i:before {
   top: 0;
   transform: rotate(-45deg);
 }
 
-nav input[type=checkbox]:checked + label #menu-icon i:after {
+nav input[name="veganburger"]:checked + label #menu-icon i:after {
   bottom: 0;
   transform: rotate(45deg);
 }
@@ -517,4 +521,110 @@ nav ul#social-media > li {
 .choice p {
   margin-bottom: 4rem;
   margin-top: 4rem;
+}
+
+/*
+  Accordion menu
+*/
+
+/* Accordion Icon */
+.accordion-icon i:before,
+.accordion-icon i:after {
+    background: white;
+    height: 0.3rem;
+    transition: all 0.4s ease-in-out;
+    width: 2rem;
+    content: "";
+    display: inline-block;
+    border-radius: 0.1rem;
+}
+
+.accordion-icon i:before {
+    position: relative;
+    top: 0.85rem;
+    left: 0rem;
+    transform: rotate(-90deg);
+}
+
+.accordion-icon i:after {
+    position: relative;
+    top: -1.9rem;
+}
+
+.accordion-icon i {
+    display: inline-block;
+    width: 2rem;
+}
+
+.accordion-icon i,
+.accordion-icon i:before,
+.accordion-icon i:after {
+    content: '';
+}
+
+.accordion-icon {
+  background: #D94B50;;
+  border-radius: 30px;
+  height: 4rem;
+  width: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+/* Close Icon */
+input[name="accordion"]:checked + label .accordion-icon i {
+  background: transparent;
+}
+
+input[name="accordion"]:checked + label .accordion-icon i:before {
+  transform: rotate(-180deg);
+}
+
+$timing: .4s;
+$ease: cubic-bezier(0.865, 0.140, 0.095, 0.870);
+
+.category {
+  max-height: 0px;
+  overflow: hidden;
+  transition: all 0.4s ease-in-out;
+  opacity: 0;
+}
+
+input[name="accordion"]:checked ~ .category {
+  max-height: 100em;
+  overflow: visible;
+  opacity: 1;
+}
+
+input[name="accordion"] {
+  display: none;
+}
+
+input[name="accordion"] + label {
+  cursor: pointer;
+}
+
+.accordion.row {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 1;
+}
+
+.accordion.row .category {
+}
+
+.category-fields-header {
+  min-width: 100vw;
+}
+
+.accordion label.accordion-toggle {
+  display: grid;
+  grid-template-columns: 8rem 20rem 4rem;
+  height: 6rem;
+  align-items: center;
+  margin-bottom: 2.7rem;
 }
