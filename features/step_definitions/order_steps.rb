@@ -10,7 +10,7 @@ When("I click on {string}") do |string|
 end
 
 Then("I should be on the login page") do
-  expect(page).to have_content("Account log-in")
+  expect(page).to have_content("Log-in to your account")
 end
 
 When("I enter my login credentials") do
