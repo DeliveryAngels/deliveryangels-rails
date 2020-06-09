@@ -1,32 +1,40 @@
 <div class="region">
-  <h2>Confirm your items</h2>
+
+  <h2 class="icon large">
+    <span>Confirm your items</span>
+    <%= inline_svg_tag(
+          "icons/confirmed.svg",
+          class: "icon",
+        )
+    %>
+  </h2>
 
   <% @order.order_items.order(:id).each do |oi| %>
 
     <%= form_with model: oi, id: oi.id, remote: true do |f| %>
-      <div class="form-field">
-
-        <%= f.submit "-" %>
-      </div>
-      <div class="form-field">
+    <div class="row category-fields">
+      <div class="field form-field">
           <%= f.label :quantity, oi.grocery.name %>
-          <!-- <span class="horizontal-number-control"> -->
-            <%= f.number_field :quantity, in: 0..4, value: oi.quantity %>
+          <!-- <span"> -->
           <!-- </span> -->
+        <span>
+          <%= f.submit "-", class: "number-control" %>
+          <%= f.number_field :quantity, in: 0..4, value: oi.quantity %>
+          <%= f.submit "+", class: "number-control"  %>
+        </span>
       </div>
-      <div class="form-field">
-        <%= f.submit "+" %>
-      </div>
+    </div>
     <% end %>
   <% end %>
 
   <%= form_with model: @order do |f| %>
-    <div class="form-field">
+    <div class="field form-field">
       <%= f.label :preferences, "Additional notes" %>
       <%= f.text_area :preferences %>
+      <p>Add brand requests, or any other details here.</p>
     </div>
 
-    <div class="form-field">
+    <div class="form-field field center">
       <%= f.submit "Arrange delivery", class: '-button' %>
     </div>
 
