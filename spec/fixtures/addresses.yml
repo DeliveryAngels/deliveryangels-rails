@@ -3,6 +3,8 @@ tom_nooks_address:
   second_line: Europe
   city: Animal Crossing
   postcode: AC1 2AC
+  lat: 0
+  lng: 0
 
 address_for_user_with_address:
   first_line: Tom's Island
@@ -10,6 +12,8 @@ address_for_user_with_address:
   city: Animal Crossing
   postcode: AC1 2AC
   user: user_with_address
+  lat: 0
+  lng: 0
 
 address_for_user_with_order_with_groceries:
   first_line: Order with
@@ -17,6 +21,8 @@ address_for_user_with_order_with_groceries:
   city: Animal Crossing
   postcode: AC1 2AC
   user: user_with_order_with_groceries
+  lat: 0
+  lng: 0
 
 address_for_user_with_multiple_orders:
   first_line: User with
@@ -24,4 +30,6 @@ address_for_user_with_multiple_orders:
   city: Animal Crossing
   postcode: AC1 2AC
   user: user_with_multiple_orders
+  lat: 0
+  lng: 0
 

@@ -1,29 +1,92 @@
 <div class="region" id="accepted_deliveries">
-    <h2>Accepted deliveries</h2>
-    <% @accepted_orders.each_with_index do |order, i| %>
-        <div class="region">
-            <header>
-                <h3>
-                    <span class="request-number">Request <%= i + 1 %></span>
-                    Delivery for <%= order.user.first_name %>
-                </h3>
-            </header>
-        </div>
-    <% end %>
+  <h2>Accepted deliveries</h2>
+  <% @accepted_orders.each_with_index do |order, i| %>
+    <header>
+        <h3>
+            <span class="request-number">Request <%= i + 1 %></span>
+            Delivery for <%= order.user.first_name %> (<%= pluralize order.address.distance_to(current_angel).round(2), "mile", "miles" %> away)
+        </h3>
+    </header>
+  <% end %>
 </div>
 
-<div class="region" id="available_deliveries">
-    <h2>Delivery requests</h2>
-    <p>You have <strong><%= @available_orders.count %> new requests</p>
 
+    <div class="region">
+      <h2 class="icon large">
+        <span>Delivery requests</span>
+        <%= inline_svg_tag(
+              "icons/deliver.svg",
+              class: "icon",
+            )
+        %>
+      </h2>
+      <p>
+        You have <strong><%= @available_orders.count %> new requests</strong>
+      </p>
+    </div>
+
+
+<div id="available_deliveries">
     <% @available_orders.each_with_index do |order, i| %>
-        <div class="region">
-            <header>
-                <h3>
-                    <span class="request-number">Request <%= i + 1 %></span>
-                    Delivery for <%= order.user.first_name %>
-                </h3>
-            </header>
-        </div>
+    <div class="request">
+      <div class="header">
+        <div class="container">
+          <h3>
+            Request <%= i + 1 %>
+          </h3>
+          <p>
+            Delivery for <%= order.user.first_name %>
+          </p>
+        </div> <!-- container -->
+      </div>
+
+      <div class="body">
+        <div class="container row">
+          <%= inline_svg_tag(
+              "icons/clock.svg",
+              class: "icon",
+            )
+          %>
+          <h3>
+            Delivery time
+          </h3>
+          <p>
+            <strong><%= order.time_slot.name %></strong>
+          </p>
+        </div><!-- container row -->
+
+
+        <div class="container row">
+          <%= inline_svg_tag(
+              "icons/location.svg",
+              class: "icon",
+            )
+          %>
+          <h3>
+            Delivery distance
+          </h3>
+          <p>
+            <strong>
+
+              <%= pluralize order.address.distance_to(current_angel).round(2), "mile", "miles" %>
+            </strong>
+          </p>
+
+
+          <div class="actions field form-field">
+            <%= form_with model: order do |f| %>
+              <%= f.submit "Accept request" %>
+            <% end %>
+          </div>
+
+          <div class="actions field form-field">
+            <%= link_to "See order details", delivery_path(order), { class: "-button secondary" } %>
+          </div>
+
+        </div><!-- container row -->
+      </div> <!-- body -->
+
+    </div>
+
     <% end %>
 </div>

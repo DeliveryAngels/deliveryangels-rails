@@ -4,8 +4,9 @@ class DeliveriesController < ApplicationController
   before_action :require_angel
 
   def index
+    @location = [50.936870, -1.460181]
     @accepted_orders = current_angel.accepted_orders
-    @available_orders = Order.available.all
+    @available_orders = Order.available.near(current_angel).all
   end
 
   protected

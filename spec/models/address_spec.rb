@@ -14,15 +14,15 @@ RSpec.describe Address do
 
     it "updates latitude and longitude based on geolocation" do
       address.update_location
-      expect([address.lat, address.lng]).to eq(location.map(&:to_s))
+      expect([address.lat, address.lng]).to eq(location)
     end
 
     it "does not override an existing location" do
-      address.lat = "0"
-      address.lng = "0"
+      address.lat = 0
+      address.lng = 0
       address.update_location
 
-      expect([address.lat, address.lng]).to eq(%w[0 0])
+      expect([address.lat, address.lng]).to eq([0, 0])
     end
   end
 end

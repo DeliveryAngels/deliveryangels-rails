@@ -3,7 +3,7 @@
 require "rails_helper"
 
 describe "an angel who wants to deliver food to people", type: :feature do
-  fixtures :angels, :users, :addresses
+  fixtures :angels, :users, :addresses, :time_slots
 
   context "when not logged in" do
     it "sends them to the log in page" do
@@ -15,10 +15,17 @@ describe "an angel who wants to deliver food to people", type: :feature do
   context "when logged in" do
     let!(:angel) { angels(:bob) }
     let!(:user) { users(:user_with_address) }
-    let!(:unassigned_order) { user.orders.create!(address: user.address) }
+    let!(:time_slot) { time_slots(:morning) }
+    let!(:unassigned_order) do
+      user.orders.create!(address: user.address, time_slot: time_slot)
+    end
 
     before do
-      user.orders.create!(angel: angel, address: user.address)
+      user.orders.create!(
+        angel: angel,
+        address: user.address,
+        time_slot: time_slot,
+      )
 
       visit "/angels/sign_in"
 

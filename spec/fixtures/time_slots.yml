@@ -1,7 +1,11 @@
-am:
+morning:
   name: Morning
   code: 1
 
-pm:
+afternoon:
   name: Afternoon
+  code: 2
+
+evening:
+  name: Evening
   code: 2
