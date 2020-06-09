@@ -21,7 +21,7 @@ TimeSlot.create(code: "4", name: "All-Day")
       fruit = Category.create(name: "Fresh fruit")
       vegetables = Category.create(name: "Fresh Vegetables")
       meat = Category.create(name: "Fresh Meat")
-      meat = Category.create(name: "Pharmacy")
+      pharmacy = Category.create(name: "Pharmacy")
 
 Grocery.create(name: "Sliced white bread", category: bread)
 Grocery.create(name: "Sliced brown bread", category: bread)
@@ -65,8 +65,6 @@ Grocery.create(name: "Apples", category: fruit)
 Grocery.create(name: "Bananas", category: fruit)
 Grocery.create(name: "Oranges", category: fruit)
 
-
-Grocery.create(name: "", category: pasta)
 Grocery.create(name: "Wholewheat pasta", category: pasta)
 Grocery.create(name: "Gluten free pasta", category: pasta)
 Grocery.create(name: "Long grain rice", category: pasta)
