@@ -1,16 +1,36 @@
-<h2>Forgot your password?</h2>
+<div class="region">
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <h2 class="icon large">
+    <span>Forgot your password?</span>
+    <%= inline_svg_tag(
+          "icons/signup.svg",
+          class: "icon",
+        )
+    %>
+  </h2>
+
+  <p>You can request a new password.</p>
+
+  <%= render "users/shared/links" %>
+
+</div> <!-- .region -->
+
+
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="form blue-bg">
+    <div class="region">
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+      <div class="actions field">
+        <%= f.submit "Reset my password" %>
+      </div>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
+  <% end %>
 
-<%= render "users/shared/links" %>
