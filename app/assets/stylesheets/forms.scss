@@ -112,9 +112,31 @@ form#new_user .field.align-left, form#new_user .field.align-left > .field_with_e
   width: 100%;
 }
 
-
-
-
 #error_explanation * {
   color: red;
+}
+
+input[type="submit"].number-control {
+  width: 2.5rem;
+  max-width: 4rem;
+  height: 2.8rem;
+  padding: 0;
+  margin: 0;
+}
+
+
+.orders-review input::-webkit-outer-spin-button,
+.orders-review input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.orders-review input[type=number] {
+  -moz-appearance: textfield;
+  text-align: center;
+}
+
+textarea {
+  width: 100%;
+  height: 10rem;
 }
